@@ -1,0 +1,24 @@
+<% provide(:title, 'アカウント作成') %>
+<div class="jumbotron h-auto signup">
+  <div class="container">
+    <h1>アカウント新規作成</h1>
+
+    <%= form_for(@user, url: signup_path) do |f| %>
+      <%= render 'shared/error_messages' %>
+
+      <%= f.label :handle, "ユーザーネーム" %>
+      <%= f.text_field :handle, class:'form-control' %>
+
+      <%= f.label :email, "メールアドレス" %>
+      <%= f.email_field :email, class:'form-control' %>
+
+      <%= f.label :password, "パスワード" %>
+      <%= f.password_field :password, class:'form-control' %>
+
+      <%= f.label :password_confirmation, "パスワード確認" %>
+      <%= f.password_field :password_confirmation, placeholder: "確認用", class:'form-control' %>
+
+      <%= f.submit "アカウント作成", class: "btn btn-primary btn-mencek" %>
+    <% end %>
+  </div>
+</div>
