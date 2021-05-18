@@ -12,3 +12,14 @@
 2021-05-16 12:44:40.617 JST [28616] STATEMENT:  select datname;
 2021-05-18 01:18:29.264 JST [42728] FATAL:  lock file "postmaster.pid" already exists
 2021-05-18 01:18:29.264 JST [42728] HINT:  Is another postmaster (PID 28602) running in data directory "/usr/local/var/postgres"?
+2021-05-18 01:53:10.971 JST [28602] LOG:  received fast shutdown request
+2021-05-18 01:53:10.971 JST [28602] LOG:  aborting any active transactions
+2021-05-18 01:53:10.973 JST [28602] LOG:  background worker "logical replication launcher" (PID 28609) exited with exit code 1
+2021-05-18 01:53:10.974 JST [28604] LOG:  shutting down
+2021-05-18 01:53:10.994 JST [28602] LOG:  database system is shut down
+2021-05-18 18:10:32.669 JST [46196] LOG:  starting PostgreSQL 13.2 on x86_64-apple-darwin20.3.0, compiled by Apple clang version 12.0.0 (clang-1200.0.32.29), 64-bit
+2021-05-18 18:10:32.671 JST [46196] LOG:  listening on IPv6 address "::1", port 5432
+2021-05-18 18:10:32.672 JST [46196] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-05-18 18:10:32.673 JST [46196] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-05-18 18:10:32.690 JST [46197] LOG:  database system was shut down at 2021-05-18 01:53:10 JST
+2021-05-18 18:10:32.698 JST [46196] LOG:  database system is ready to accept connections

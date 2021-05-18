@@ -1,25 +1,24 @@
 @import "bootstrap";
 
 /* home */
-.center {
+
+div.center div.container {
   height: 550px;
-  margin-right: 200px;
-  margin-left: 200px;
+  width: 700px;
   text-align: center;
   background-color: #ffdbc9;
-}
+  h1 {
+    padding-top: 40px;
+    margin-bottom: 30px;
+  }
 
-.center h1 {
-  padding-top: 40px;
-  margin-bottom: 30px;
-}
-
-.center p {
-  margin-bottom: 30px;
-}
+  .center p {
+    margin-bottom: 30px;
+  }
 
 
-#signup {
-  margin-top: 50px;
-  margin-bottom: 10px;
+  #signup {
+    margin-top: 50px;
+    margin-bottom: 10px;
+  }
 }
