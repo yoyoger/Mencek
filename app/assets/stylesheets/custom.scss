@@ -3,11 +3,20 @@
 /* button */
 .btn-mencek {
   border: 0;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 20px;
   background-color: #cc3300;
   &:hover {
     background-color: #990000
+  }
+}
+
+/*小さいリンク*/
+.small_link {
+  color: #cc3300;
+  text-decoration: none;
+  font-weight: bold;
+  &:hover {
+    color: #990000;
   }
 }
 
@@ -26,6 +35,45 @@
   }
 }
 
+/* フォーム(sessions#new,users#new) */
+div.form div.container {
+  width: 700px;
+  padding-bottom: 100px;
+  background-color: #ececec;
+  h1 {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    text-align: center;
+  }
+  form {
+    label {
+      position: relative;
+      left: 85px;
+    }
+    input {
+      width: 500px;
+      right: 0;
+      left: 0;
+      padding-top: 3px;
+      padding-bottom: 3px;
+      margin-bottom: 10px;
+      margin-right: auto;
+      margin-left: auto;
+      position: static;
+    }
+    input.btn-mencek {
+      position: absolute;
+      width: 150px;
+      height: 50px;
+      right: 0;
+      left: 0;
+      margin-top: 20px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+  }
+}
+
 
 /* home */
 
@@ -36,52 +84,27 @@ div.home div.container {
   background-color: #ffdbc9;
   h1 {
     padding-top: 40px;
-    margin-bottom: 30px;
+    padding-bottom: 30px;
   }
 
   p {
-    margin-bottom: 50px;
+    margin-bottom: 40px;
   }
 }
 
 /*　アカウント作成ページ */
-div.signup {
+div.signup {}
 
-  div.container {
-    width: 700px;
-    padding-bottom: 100px;
-    background-color: #ececec;
-    h1 {
-      padding-top: 30px;
-      padding-bottom: 30px;
-      text-align: center;
-    }
-    form {
-      label {
-        position: relative;
-        left: 85px;
-      }
-      input {
-        width: 500px;
-        right: 0;
-        left: 0;
-        padding-top: 3px;
-        padding-bottom: 3px;
-        margin-bottom: 10px;
-        margin-right: auto;
-        margin-left: auto;
-        position: static;
-      }
-      input.btn-mencek {
-        position: absolute;
-        width: 150px;
-        height: 50px;
-        right: 0;
-        left: 0;
-        margin-top: 25px;
-        margin-right: auto;
-        margin-left: auto;
-      }
+/* ログインペーじ */
+div.login div.container {
+  p.to_signup {
+    font-size: 12px;
+    position: relative;
+    left: 85px;
+  }
+  form {
+    input.btn-login {
+      margin-top: 40px;
     }
   }
 }

@@ -1,24 +1,31 @@
 @import "bootstrap";
 
+:root {
+  --footer-height: 60px;
+}
+
 /* universal */
+html {
+  min-height: 100vh;
+}
 
 body {
-  padding-top: 0px;
-  padding-bottom: 0px;
-  margin-bottom: 0px;
+  min-height: 100vh;
+  padding-bottom: calc(var(--footer-height) + 60px);
+  box-sizing: border-box;
+  position: relative;
 }
+
 
 /* header */
 header {
+  height: 80px;
   background-color: #cc3300;
   margin-bottom: 60px;
   a {
     color: #ffffff;
     text-decoration: none;
     border-radius: 0.3rem;
-    &:hover {
-      color: white;
-    }
   }
   a#logo {
     float: left;
@@ -29,6 +36,7 @@ header {
     letter-spacing: -1px;
     font-weight: bold;
     &:hover {
+      color: #ffffff;
       background-color: #990000;
     }
   }
@@ -41,24 +49,40 @@ header {
       font-size: 15px;
       font-weight: bold;
       &:hover {
+        color: #ffffff;
         background-color: #990000;
       }
     }
+  }
+  a#dropdown1 {
+    padding: 10px;
+    margin-left: 10px;
+    font-size: 20px;
+    &:hover {
+      color: #ffffff;
+    }
+  }
+
+  li.dropdown-item a {
+    color: $black;
   }
 }
 
 /* footer */
 footer {
-  background-color: #cc3300;
-  margin-top: 60px;
-  height: 60px;
+  background-color: #ececec;
+  height: var(--footer-height);
   width: 100%;
-  position: relative;
+  position: absolute;
+  bottom: 0;
   div {
-    color: $white;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
+    height: 100%;
+    position: relative;
+    p {
+      width: 100%;
+      margin-bottom: 0;
+      position: absolute;
+      bottom: 0;
+    }
   }
-
 }
