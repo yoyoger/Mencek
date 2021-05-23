@@ -29,3 +29,55 @@
 2021-05-19 15:22:22.231 JST [54855] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
 2021-05-19 15:22:22.248 JST [54856] LOG:  database system was shut down at 2021-05-19 03:15:31 JST
 2021-05-19 15:22:22.255 JST [54855] LOG:  database system is ready to accept connections
+2021-05-19 22:17:57.272 JST [54855] LOG:  received fast shutdown request
+2021-05-19 22:17:57.272 JST [54855] LOG:  aborting any active transactions
+2021-05-19 22:17:57.275 JST [54855] LOG:  background worker "logical replication launcher" (PID 54862) exited with exit code 1
+2021-05-19 22:17:57.275 JST [54857] LOG:  shutting down
+2021-05-19 22:17:57.285 JST [54855] LOG:  database system is shut down
+2021-05-20 13:48:34.200 JST [62808] LOG:  starting PostgreSQL 13.2 on x86_64-apple-darwin20.3.0, compiled by Apple clang version 12.0.0 (clang-1200.0.32.29), 64-bit
+2021-05-20 13:48:34.202 JST [62808] LOG:  listening on IPv6 address "::1", port 5432
+2021-05-20 13:48:34.202 JST [62808] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-05-20 13:48:34.203 JST [62808] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-05-20 13:48:34.220 JST [62809] LOG:  database system was shut down at 2021-05-19 22:17:57 JST
+2021-05-20 13:48:34.226 JST [62808] LOG:  database system is ready to accept connections
+2021-05-20 16:21:30.974 JST [64651] ERROR:  database "mencek_development" is being accessed by other users
+2021-05-20 16:21:30.974 JST [64651] DETAIL:  There are 2 other sessions using the database.
+2021-05-20 16:21:30.974 JST [64651] STATEMENT:  DROP DATABASE IF EXISTS "mencek_development"
+2021-05-20 16:28:37.935 JST [64937] ERROR:  database "mencek_development" is being accessed by other users
+2021-05-20 16:28:37.935 JST [64937] DETAIL:  There are 2 other sessions using the database.
+2021-05-20 16:28:37.935 JST [64937] STATEMENT:  DROP DATABASE IF EXISTS "mencek_development"
+2021-05-20 16:29:10.714 JST [64965] ERROR:  database "mencek_development" is being accessed by other users
+2021-05-20 16:29:10.714 JST [64965] DETAIL:  There is 1 other session using the database.
+2021-05-20 16:29:10.714 JST [64965] STATEMENT:  DROP DATABASE IF EXISTS "mencek_development"
+2021-05-20 21:05:51.568 JST [68574] FATAL:  database "mencek_test-0" does not exist
+2021-05-20 21:05:51.569 JST [68575] FATAL:  database "mencek_test-1" does not exist
+2021-05-20 21:05:51.570 JST [68579] FATAL:  database "mencek_test-6" does not exist
+2021-05-20 21:05:51.569 JST [68576] FATAL:  database "mencek_test-5" does not exist
+2021-05-20 21:05:51.571 JST [68578] FATAL:  database "mencek_test-2" does not exist
+2021-05-20 21:05:51.572 JST [68581] FATAL:  database "mencek_test-7" does not exist
+2021-05-20 21:05:51.573 JST [68577] FATAL:  database "mencek_test-3" does not exist
+2021-05-20 21:05:51.573 JST [68580] FATAL:  database "mencek_test-4" does not exist
+2021-05-20 22:21:00.648 JST [62808] LOG:  received fast shutdown request
+2021-05-20 22:21:00.649 JST [62808] LOG:  aborting any active transactions
+2021-05-20 22:21:00.653 JST [62808] LOG:  background worker "logical replication launcher" (PID 62815) exited with exit code 1
+2021-05-20 22:21:00.653 JST [62810] LOG:  shutting down
+2021-05-20 22:21:00.669 JST [62808] LOG:  database system is shut down
+2021-05-23 17:37:07.362 JST [1792] LOG:  starting PostgreSQL 13.2 on x86_64-apple-darwin20.3.0, compiled by Apple clang version 12.0.0 (clang-1200.0.32.29), 64-bit
+2021-05-23 17:37:07.365 JST [1792] LOG:  listening on IPv6 address "::1", port 5432
+2021-05-23 17:37:07.365 JST [1792] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-05-23 17:37:07.365 JST [1792] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-05-23 17:37:07.395 JST [1793] LOG:  database system was shut down at 2021-05-20 22:21:00 JST
+2021-05-23 17:37:07.405 JST [1792] LOG:  database system is ready to accept connections
+2021-05-23 19:57:11.878 JST [1792] LOG:  received fast shutdown request
+2021-05-23 19:57:11.878 JST [1792] LOG:  aborting any active transactions
+2021-05-23 19:57:11.879 JST [4551] FATAL:  terminating connection due to administrator command
+2021-05-23 19:57:11.879 JST [4423] FATAL:  terminating connection due to administrator command
+2021-05-23 19:57:11.881 JST [1792] LOG:  background worker "logical replication launcher" (PID 1799) exited with exit code 1
+2021-05-23 19:57:11.882 JST [1794] LOG:  shutting down
+2021-05-23 19:57:11.896 JST [1792] LOG:  database system is shut down
+2021-05-24 00:44:21.260 JST [1250] LOG:  starting PostgreSQL 13.2 on x86_64-apple-darwin20.3.0, compiled by Apple clang version 12.0.0 (clang-1200.0.32.29), 64-bit
+2021-05-24 00:44:21.262 JST [1250] LOG:  listening on IPv6 address "::1", port 5432
+2021-05-24 00:44:21.262 JST [1250] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-05-24 00:44:21.263 JST [1250] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-05-24 00:44:21.287 JST [1251] LOG:  database system was shut down at 2021-05-23 19:57:11 JST
+2021-05-24 00:44:21.294 JST [1250] LOG:  database system is ready to accept connections

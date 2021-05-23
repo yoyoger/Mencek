@@ -1,2 +1,8 @@
 <h1><%= @user.handle %> さんのページ</h1>
 <p>テスト</p>
+
+<div id="delete_button_for_admin">
+  <% if current_user.admin? && !current_user?(@user) %>
+    <%= link_to "ユーザー削除", @user, method: :delete, data: { confirm: "本当に削除してよろしいですか？" }, class: "btn btn-secondary btn-sm" %>
+  <% end %>
+</div>

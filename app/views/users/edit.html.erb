@@ -1,0 +1,24 @@
+<% provide(:title, "プロフィール編集") %>
+<div class="jumbotron edit_profile form">
+  <div class="container">
+    <h1>プロフィールの編集</h1>
+
+    <%= form_for(@user) do |f| %>
+      <%= render 'shared/error_messages' %>
+
+      <%= f.label :handle, "ユーザーネーム" %>
+      <%= f.text_field :handle, class:'form-control' %>
+
+      <%= f.label :email, "メールアドレス" %>
+      <%= f.email_field :email, class:'form-control' %>
+
+      <%= f.label :password, "パスワード" %>
+      <%= f.password_field :password, class:'form-control' %>
+
+      <%= f.label :password_confirmation, "パスワード確認" %>
+      <%= f.password_field :password_confirmation, placeholder: "確認用", class:'form-control' %>
+
+      <%= f.submit "更新", class: "btn btn-primary btn-mencek" %>
+    <% end %>
+  </div>
+</div>

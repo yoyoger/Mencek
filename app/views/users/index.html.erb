@@ -1,0 +1,10 @@
+<% provide(:title, "他のユーザー") %>
+<h1>他のユーザー</h1>
+
+<%= paginate @users %>
+
+<ul class="users">
+  <%= render @users %>
+</ul>
+
+<%= paginate @users %>

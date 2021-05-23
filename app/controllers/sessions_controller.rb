@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :not_logged_in, only: [:new, :create]
+
   def new
   end
 
@@ -6,7 +8,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
       log_in user
-      redirect_to user
+      redirect_back_or user
     else
       flash.now[:danger] = "入力されたメールアドレスまたはパスワードに誤りがあります。"
       render 'new'
@@ -17,4 +19,11 @@ class SessionsController < ApplicationController
     log_out
     redirect_to root_url
   end
+
+  private
+    def not_logged_in
+      if logged_in?
+        redirect_to root_url
+      end
+    end
 end

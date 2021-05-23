@@ -4,18 +4,25 @@
       <nav>
         <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
+          <li><%= link_to "他のユーザー", '/user_index', class:"menu" %></li>
           <li class="dropdown">
-            <a href="#" id="dropdown1" class="dropdown-toggle" data-boundary="parent"
+            <a href="#" id="dropdown1" class=" menu dropdown-toggle" data-boundary="parent"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= current_user.handle %>
             </a>
             <ul class="dropdown-menu" aria-labeledby="dropdown1">
               <li class="dropdown-item"><%= link_to "マイページ", current_user %></li>
-              <li class="dropdown-item"><%= link_to "プロフィール編集", '#' %></li>
+              <li class="dropdown-item"><%= link_to "プロフィール編集", edit_user_path(current_user) %></li>
               <li class="dropdown-divider"></li>
               <li class="dropdown-item">
                 <%= link_to "ログアウト", logout_path, method: :delete %>
               </li>
+            <% if !current_user.admin? %>
+              <li class="dropdown-divider"></li>
+              <li class="dropdown-item">
+                <%= link_to "アカウント削除", current_user, method: :delete, data: { confirm: "本当に削除してよろしいですか？" } %>
+              </li>
+            <% end %>
             </ul>
           </li>
         <% else %>

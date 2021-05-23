@@ -54,14 +54,7 @@ header {
       }
     }
   }
-  a#dropdown1 {
-    padding: 10px;
-    margin-left: 10px;
-    font-size: 20px;
-    &:hover {
-      color: #ffffff;
-    }
-  }
+
 
   li.dropdown-item a {
     color: $black;
