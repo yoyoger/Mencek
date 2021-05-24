@@ -1,81 +1,17 @@
-@import "bootstrap";
-
-:root {
-  --footer-height: 60px;
-}
-
-/* universal */
-html {
-  min-height: 100vh;
-}
-
-body {
-  min-height: 100vh;
-  padding-bottom: calc(var(--footer-height) + 60px);
-  box-sizing: border-box;
-  position: relative;
-}
-
-
-/* header */
-header {
-  height: 80px;
-  background-color: #cc3300;
-  margin-bottom: 60px;
-  a {
-    color: #ffffff;
-    text-decoration: none;
-    border-radius: 0.3rem;
-  }
-  a#logo {
-    float: left;
-    padding-right: 10px;
-    padding-left: 10px;
-    margin-left: -30px;
-    font-size: 2.5em;
-    letter-spacing: -1px;
-    font-weight: bold;
-    &:hover {
-      color: #ffffff;
-      background-color: #990000;
-    }
-  }
-  ul.navbar-nav {
-    flex-direction: row;
-    margin-right: -30px;
-    a.menu {
-      padding: 10px;
-      margin-left: 10px;
-      font-size: 15px;
-      font-weight: bold;
-      &:hover {
-        color: #ffffff;
-        background-color: #990000;
-      }
-    }
-  }
-
-
-  li.dropdown-item a {
-    color: $black;
-  }
-}
-
-/* footer */
-footer {
-  background-color: #ececec;
-  height: var(--footer-height);
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  div {
-    height: 100%;
-    position: relative;
-    p {
-      width: 100%;
-      margin-bottom: 0;
-      position: absolute;
-      bottom: 0;
-    }
-  }
-}
+/*
+ * This is a manifest file that'll be compiled into application.css, which
+ * will include all the files listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets,
+ * vendor/assets/stylesheets, or vendor/assets/stylesheets of plugins, if any,
+ * can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear
+ * at the bottom of the compiled file so the styles you add here take
+ * precedence over styles defined in any styles defined in the other CSS/SCSS
+ * files in this directory. It is generally better to create a new file per
+ * style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */

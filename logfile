@@ -81,3 +81,67 @@
 2021-05-24 00:44:21.263 JST [1250] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
 2021-05-24 00:44:21.287 JST [1251] LOG:  database system was shut down at 2021-05-23 19:57:11 JST
 2021-05-24 00:44:21.294 JST [1250] LOG:  database system is ready to accept connections
+2021-05-24 01:09:39.382 JST [1735] ERROR:  syntax error at or near "dropdb" at character 1
+2021-05-24 01:09:39.382 JST [1735] STATEMENT:  dropdb mencek_test-0
+	;
+2021-05-24 01:10:06.612 JST [1735] ERROR:  syntax error at or near "dropdb" at character 1
+2021-05-24 01:10:06.612 JST [1735] STATEMENT:  dropdb mencek_test-0;
+2021-05-24 01:10:31.283 JST [1735] ERROR:  syntax error at or near "-" at character 26
+2021-05-24 01:10:31.283 JST [1735] STATEMENT:  DROP DATABASE mencek_test-0;
+2021-05-24 01:10:36.554 JST [1735] ERROR:  syntax error at or near "-" at character 26
+2021-05-24 01:10:36.554 JST [1735] STATEMENT:  DROP DATABASE mencek_test-1;
+2021-05-24 01:10:41.829 JST [1735] ERROR:  syntax error at or near "-" at character 26
+2021-05-24 01:10:41.829 JST [1735] STATEMENT:  DROP DATABASE mencek_test-2;
+2021-05-24 01:11:44.794 JST [1735] ERROR:  database "mencek_test0" does not exist
+2021-05-24 01:11:44.794 JST [1735] STATEMENT:  DROP DATABASE mencek_test0;
+2021-05-24 01:11:49.594 JST [1735] ERROR:  syntax error at or near "-" at character 26
+2021-05-24 01:11:49.594 JST [1735] STATEMENT:  DROP DATABASE mencek_test-0;
+2021-05-24 01:18:57.982 JST [1914] ERROR:  syntax error at or near "db" at character 6
+2021-05-24 01:18:57.982 JST [1914] STATEMENT:  drop db mencek_test-0;
+2021-05-24 01:19:58.084 JST [1914] ERROR:  syntax error at or near "-" at character 26
+2021-05-24 01:19:58.084 JST [1914] STATEMENT:  drop database mencek_test-0;
+2021-05-24 01:20:13.897 JST [1914] ERROR:  database "mencek_test0" does not exist
+2021-05-24 01:20:13.897 JST [1914] STATEMENT:  drop database mencek_test0;
+2021-05-24 01:20:21.524 JST [1914] ERROR:  syntax error at or near "-" at character 26
+2021-05-24 01:20:21.524 JST [1914] STATEMENT:  drop database mencek_test-0;
+2021-05-24 01:20:25.745 JST [1914] ERROR:  syntax error at or near "-" at character 27
+2021-05-24 01:20:25.745 JST [1914] STATEMENT:  drop database mencek_test -0;
+2021-05-24 01:20:54.365 JST [1914] ERROR:  syntax error at or near "-" at character 26
+2021-05-24 01:20:54.365 JST [1914] STATEMENT:  drop database mencek_test-0;
+2021-05-24 02:10:28.696 JST [2984] FATAL:  role "mencek_development" does not exist
+2021-05-24 02:12:21.094 JST [2989] ERROR:  syntax error at or near "users" at character 1
+2021-05-24 02:12:21.094 JST [2989] STATEMENT:  users;
+2021-05-24 02:12:28.749 JST [2989] ERROR:  syntax error at or near "all" at character 14
+2021-05-24 02:12:28.749 JST [2989] STATEMENT:  select users all;
+2021-05-24 02:12:34.215 JST [2989] ERROR:  column "users" does not exist at character 8
+2021-05-24 02:12:34.215 JST [2989] STATEMENT:  select users;
+2021-05-24 02:15:45.792 JST [2989] ERROR:  syntax error at or near "DSC" at character 41
+2021-05-24 02:15:45.792 JST [2989] STATEMENT:  select * from users order by created_at DSC;
+2021-05-24 02:23:35.567 JST [3286] FATAL:  database "renyasasaki" does not exist
+2021-05-24 02:25:03.540 JST [3291] ERROR:  column "asia" does not exist at character 8
+2021-05-24 02:25:03.540 JST [3291] STATEMENT:  select Asia  from pg_timezone_names;
+2021-05-24 02:27:57.115 JST [1250] LOG:  received SIGHUP, reloading configuration files
+2021-05-24 02:40:01.989 JST [1250] LOG:  received fast shutdown request
+2021-05-24 02:40:01.990 JST [1250] LOG:  aborting any active transactions
+2021-05-24 02:40:01.992 JST [1250] LOG:  background worker "logical replication launcher" (PID 1257) exited with exit code 1
+2021-05-24 02:40:01.992 JST [1252] LOG:  shutting down
+2021-05-24 02:40:02.006 JST [1250] LOG:  database system is shut down
+2021-05-24 17:22:41.668 JST [4984] LOG:  starting PostgreSQL 13.2 on x86_64-apple-darwin20.3.0, compiled by Apple clang version 12.0.0 (clang-1200.0.32.29), 64-bit
+2021-05-24 17:22:41.671 JST [4984] LOG:  listening on IPv6 address "::1", port 5432
+2021-05-24 17:22:41.671 JST [4984] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-05-24 17:22:41.672 JST [4984] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-05-24 17:22:41.705 JST [4985] LOG:  database system was shut down at 2021-05-24 02:41:56 JST
+2021-05-24 17:22:41.712 JST [4984] LOG:  database system is ready to accept connections
+2021-05-24 17:27:09.832 JST [5114] ERROR:  syntax error at or near "dropdb" at character 1
+2021-05-24 17:27:09.832 JST [5114] STATEMENT:  dropdb -U renyasasaki moncek_test-7;
+2021-05-24 17:29:05.263 JST [5114] ERROR:  syntax error at or near "dropdb" at character 1
+2021-05-24 17:29:05.263 JST [5114] STATEMENT:  dropdb mencek_test;
+2021-05-24 17:30:11.959 JST [5114] ERROR:  syntax error at or near "-" at character 26
+2021-05-24 17:30:11.959 JST [5114] STATEMENT:  drop database mencek_test-7;
+2021-05-24 17:47:10.731 JST [5114] ERROR:  syntax error at or near "version" at character 1
+2021-05-24 17:47:10.731 JST [5114] STATEMENT:  version;
+2021-05-24 22:45:00.842 JST [4984] LOG:  received fast shutdown request
+2021-05-24 22:45:00.843 JST [4984] LOG:  aborting any active transactions
+2021-05-24 22:45:00.846 JST [4984] LOG:  background worker "logical replication launcher" (PID 4991) exited with exit code 1
+2021-05-24 22:45:00.847 JST [4986] LOG:  shutting down
+2021-05-24 22:45:00.859 JST [4984] LOG:  database system is shut down

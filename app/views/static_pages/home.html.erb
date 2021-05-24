@@ -1,5 +1,5 @@
 <% if logged_in? %>
-  <h1>こんにちは、<%= @user.handle %> さん。</h1>
+  <h1><%= greeting %>、<%= @user.handle %> さん。</h1>
   <p>テスト</p>
 <% else %>
   <div class="jumbotron home">
