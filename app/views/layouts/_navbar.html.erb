@@ -1,35 +1,31 @@
-<header class="navbar navbar-fixed-top navbar-expand-lg">
-  <div class="container">
-      <%= link_to base_title, '/', id: "logo", class:"text-decoration-none" %>
-      <nav>
-        <ul class="nav navbar-nav navbar-right">
-        <% if logged_in? %>
-          <li><%= link_to "他のユーザー", '/user_index', class:"menu" %></li>
-          <li class="dropdown">
-            <a href="#" id="dropdown1" class=" menu dropdown-toggle" data-boundary="parent"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%= current_user.handle %>
-            </a>
-            <ul class="dropdown-menu" aria-labeledby="dropdown1">
-              <li class="dropdown-item"><%= link_to "マイページ", current_user %></li>
-              <li class="dropdown-item"><%= link_to "プロフィール編集", edit_user_path(current_user) %></li>
-              <li class="dropdown-divider"></li>
-              <li class="dropdown-item">
-                <%= link_to "ログアウト", logout_path, method: :delete %>
-              </li>
-            <% if !current_user.admin? %>
-              <li class="dropdown-divider"></li>
-              <li class="dropdown-item">
-                <%= link_to "アカウント削除", current_user, method: :delete, data: { confirm: "本当に削除してよろしいですか？" } %>
-              </li>
-            <% end %>
-            </ul>
+<header>
+  <div class="logo">
+    <%= link_to image_tag("header.png"), '/', alt:"logo" %>
+  </div>
+  <nav>
+    <ul class="global-nav dropdown-menu">
+      <% if logged_in? %>
+      <li><%= link_to "他のユーザー", '/user_index' %></li>
+      <li><a href="#"><%= current_user.handle %></a>
+        <ul>
+          <li><%= link_to "マイページ", current_user %></li>
+          <li><%= link_to "プロフィール編集", edit_user_path(current_user) %></li>
+          <li class="dropdown-divider"></li>
+          <li>
+            <%= link_to "ログアウト", logout_path, method: :delete %>
           </li>
-        <% else %>
-          <li><%= link_to "アカウント作成", '/signup', class:"menu" %></li>
-          <li><%= link_to "ログイン", '/login', class:"menu" %></li>
+        <% if !current_user.admin? %>
+          <li class="dropdown-divider"></li>
+          <li>
+            <%= link_to "アカウント削除", current_user, method: :delete, data: { confirm: "本当に削除してよろしいですか？" } %>
+          </li>
         <% end %>
         </ul>
-      </nav>
-  </div>
+      </li>
+      <% else %>
+      <li><%= link_to "アカウント作成", '/signup' %></li>
+      <li><%= link_to "ログイン", '/login' %></li>
+      <% end %>
+    </ul>
+  </nav>
 </header>

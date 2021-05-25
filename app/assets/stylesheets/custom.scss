@@ -1,23 +1,133 @@
 @charset "utf-8";
 
+/* 基本設定 */
 body {
   margin: 0;
   padding: 0;
-  background-image: image-url('logo_mencek.png');
+  height: 100%;
+  .clearfix:after {
+    content: "";
+      display: block;
+      clear: both;
+  }
+  /* 初期設定リセット */
+  p,h1,h2,h3,h4,h5,h6 {
+    margin-top: 0;
+  }
+  
+  img {
+    vertical-align: bottom;
+  }
+  
+  ul {
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  /* 背景 */
+  background-image: image-url('logo_bg.png');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 300px 300px;
+  background-position: center center;
+  /* 文字 */
+  color: #000000;
+  font-size: 20px;
+  line-height: 2;
+  a {
+    text-decoration: none;
+    &:visited {
+      color: inherit;
+    }
+    &:hover {
+      font-weight: bold;
+    }
+  }
 }
 
-p,h1,h2,h3,h4,h5,h6 {
-  margin-top: 0;
+/* ヘッダー */
+header {
+  box-sizing: border-box;
+  width: 100vw;
+  height: 80px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #ff0000;
+  .logo {
+    float: left;
+    margin: auto;
+    img {
+      height: 60px;
+      margin-top: 10px;
+      border-radius: 5px;
+      &:hover {
+        background-color: #7e0000;
+      }
+    }
+  }
+  /* メインメニューバー */
+  .dropdown-menu {
+    float: right;
+    li {
+      float: left;
+      list-style: none;
+      position: relative;
+      width: 150px;
+      height: 80px;
+    }
+    a {
+      padding: 23px 0;
+      font-size: 17px;
+      color: #ffffff;
+      font-weight: bold;
+      text-align: center;
+      display: block;
+      &:hover {
+        background-color: #7e0000;
+      }
+    }
+  }
+  /* サブメニュー */
+  ul.dropdown-menu {
+    li:hover ul {
+      display: block;
+      margin: 0;
+      padding: 0;
+      .dropdown-divider {
+        display: none;
+      }
+      li {
+        height: auto;
+      }
+      a {
+        line-height: 50px;
+        width: 150px;
+        margin: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        text-align: center;
+        font-size: 15px;
+        background-color: #3d3c3c;
+        &:hover {
+          background-color: #7e0000;
+        }
+      }
+    }
+    ul {
+      display: none;
+      position: absolute;
+    }
+  }
 }
 
-img {
-  vertical-align: bottom;
+/* フッター */
+footer {
+  width: 100vw;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  small {
+    font-size: small;
+  }
 }
 
-ul {
-  margin: 0;
-  padding: 0;
-}
