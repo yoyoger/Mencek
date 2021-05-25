@@ -1,0 +1,12 @@
+<li>
+  <section>
+    <h2><%= micropost.shop_name %> | <%= micropost.menu_name %></h2>
+    <p><%= micropost.content %></p>
+    <small>Posted at <%= micropost.created_at.year %>/<%= micropost.created_at.month %>/<%= micropost.created_at.day %> <%= micropost.created_at.hour %>:<%= micropost.created_at.min %><br>
+    by <%= link_to micropost.user.handle, micropost.user %>.</small>
+    <div><%= link_to "詳しくみる", post_path(micropost.id) %></div>
+    <% if ( current_user?(micropost.user) || current_user.admin? ) %>
+      <div><%= link_to "削除", delete_post_path(micropost), method: :delete, data: {confirm: "本当によろしいですか？"} %></div>
+    <% end %>
+  </section>
+</li>

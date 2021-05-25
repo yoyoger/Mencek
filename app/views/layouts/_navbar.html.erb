@@ -1,31 +1,31 @@
 <header>
-  <div class="logo">
-    <%= link_to image_tag("header.png"), '/', alt:"logo" %>
-  </div>
-  <nav>
-    <ul class="global-nav dropdown-menu">
-      <% if logged_in? %>
-      <li><%= link_to "他のユーザー", '/user_index' %></li>
-      <li><a href="#"><%= current_user.handle %></a>
-        <ul>
-          <li><%= link_to "マイページ", current_user %></li>
-          <li><%= link_to "プロフィール編集", edit_user_path(current_user) %></li>
-          <li class="dropdown-divider"></li>
-          <li>
-            <%= link_to "ログアウト", logout_path, method: :delete %>
-          </li>
-        <% if !current_user.admin? %>
-          <li class="dropdown-divider"></li>
-          <li>
-            <%= link_to "アカウント削除", current_user, method: :delete, data: { confirm: "本当に削除してよろしいですか？" } %>
-          </li>
+    <div class="logo">
+      <%= link_to image_tag("header.png"), '/', alt:"logo" %>
+    </div>
+    <nav>
+      <ul class="global-nav dropdown-menu">
+        <% if logged_in? %>
+        <li><%= link_to "他のユーザー", '/user_index' %></li>
+        <li><a href="#"><%= current_user.handle %></a>
+          <ul>
+            <li><%= link_to "マイページ", current_user %></li>
+            <li><%= link_to "プロフィール編集", edit_user_path(current_user) %></li>
+            <li class="dropdown-divider"></li>
+            <li>
+              <%= link_to "ログアウト", logout_path, method: :delete %>
+            </li>
+          <% if !current_user.admin? %>
+            <li class="dropdown-divider"></li>
+            <li>
+              <%= link_to "アカウント削除", current_user, method: :delete, data: { confirm: "本当に削除してよろしいですか？" } %>
+            </li>
+          <% end %>
+          </ul>
+        </li>
+        <% else %>
+        <li><%= link_to "アカウント作成", '/signup' %></li>
+        <li><%= link_to "ログイン", '/login' %></li>
         <% end %>
-        </ul>
-      </li>
-      <% else %>
-      <li><%= link_to "アカウント作成", '/signup' %></li>
-      <li><%= link_to "ログイン", '/login' %></li>
-      <% end %>
-    </ul>
-  </nav>
+      </ul>
+    </nav>
 </header>

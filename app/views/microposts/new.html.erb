@@ -1,0 +1,18 @@
+<% provide(:title, "投稿する") %>
+<section>
+  <h1>新しく投稿する</h1>
+  <div class="form">
+    <%= form_with model: @micropost, url: '/postit', local: true do |form| %>
+      <%= render 'shared/error_messages', object: form.object %>
+      <dl>
+        <dt>店名</dt>
+        <dd><%= form.text_field :shop_name %></dd>
+        <dt>注文/購入した品</dt>
+        <dd><%= form.text_field :menu_name %></dd>
+        <dt>レビュー</dt>
+        <dd><%= form.text_area :content %></dd>
+      </dl>
+      <%= form.submit "投稿する", class:"btn" %>
+    <% end %>
+  </div>
+</section>

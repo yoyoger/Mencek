@@ -1,23 +1,21 @@
 <% if logged_in? %>
   <h1><%= greeting %>、<%= @user.handle %> さん。</h1>
-  <p>テスト</p>
+  <div><%= link_to "新しい投稿を作成", '/postit' %></div>
+  <div><%= link_to "マイページへ", @user %></div>
 <% else %>
-  <div class="jumbotron home">
-    <div class="container">
-      <h1><%= base_title %>って何？</h1>
-      <p>
-        いらっしゃいませ！<br>
-        <%= base_title %>にアクセス頂き誠に有難う御座います。<br>
-        <br>
-        当サイトは、ラーメンをはじめとする麺類をこよなく愛する皆様と、<br>
-        お気に入りの店やメニューを共有することを目的とした情報サイトを
-        目指しています。<br>
-        <br>
-        是非、アカウントを作成・ログインして充実した麺ライフをお送り下さい！
-      </p>
+  <h1><%= base_title %>って何？</h1>
+  <p>
+    いらっしゃいませ！<br>
+    <%= base_title %>にアクセス頂き誠に有難う御座います。<br>
+    <br>
+    当サイトは、ラーメンをはじめとする麺類をこよなく愛する皆様と、<br>
+    お気に入りの店やメニューを共有することを目的とした情報サイトを
+    目指しています。<br>
+    <br>
+    是非、アカウントを作成・ログインして充実した麺ライフをお送り下さい！
+  </p>
 
-      <%= link_to "アカウント作成", '/signup', class: "btn btn-lg btn-primary btn-mencek" %><br>
-      <%= link_to "ログイン", '/login', class: "btn btn-lg btn-primary btn-mencek" %>
-    </div>
-  </div>
+  <%= link_to "アカウント作成", '/signup' %><br>
+  <%= link_to "ログイン", '/login' %>
 <% end %>
+

@@ -1,5 +1,14 @@
+<% provide(:title, "#{@user.handle}さん")  %>
 <h1><%= @user.handle %> さんのページ</h1>
-<p>テスト</p>
+
+<% if @user.microposts.any? %>
+  <ol>
+    <%= render @microposts %>
+  </ol>
+  <%= paginate @microposts %>
+<% else %>
+  <h2>まだ投稿がありません。</h2>
+<% end %>
 
 <div id="delete_button_for_admin">
   <% if current_user.admin? && !current_user?(@user) %>

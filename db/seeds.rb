@@ -13,3 +13,10 @@ User.create!( handle: "yoyoger",
                password:              password,
                password_confirmation: password)
 end
+
+users = User.order(:created_at).take(6)
+20.times do 
+  users.each do |user| 
+    user.microposts.create!(shop_name: Faker::WorldCup.team, menu_name: Faker::Food.dish, content: Faker::Food.description)
+  end
+end

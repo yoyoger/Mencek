@@ -1,0 +1,19 @@
+<% provide(:title,"投稿情報") %>
+<section>
+  <h2>投稿情報</h2>
+  <table>
+    <tr>
+      <th>店名</th><td><%= @micropost.shop_name %></td>
+    </tr>
+    <tr>
+      <th>メニュー</th><td><%= @micropost.menu_name %></td>
+    </tr>
+    <tr>
+      <th>レビュー</th><td><%= @micropost.content %></td>
+    </tr>
+  </table>
+  <% if ( current_user?(@micropost.user) || current_user.admin? ) %>
+    <div><%= link_to "この投稿を削除する", delete_post_path(@micropost), method: :delete, data: {confirm: "本当によろしいですか？"} %></div>
+  <% end %>
+  <div><%= link_to "戻る", user_path(@micropost.user_id) %></div>
+</section>

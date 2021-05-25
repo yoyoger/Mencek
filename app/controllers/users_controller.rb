@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @microposts = @user.microposts.page(params[:page]).per(5)
   end
 
   def index
@@ -51,14 +52,6 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:handle, :email, :password, :password_confirmation)
-    end
-
-    def logged_in_user
-      unless logged_in?
-        store_location
-        flash[:danger] = "ログインしてください。"
-        redirect_to login_url
-      end
     end
 
     def correct_user
