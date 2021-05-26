@@ -1,0 +1,9 @@
+<h1><%= greeting %>、<%= @user.handle %> さん。</h1>
+<div class="main">
+  <div><%= link_to "新しい投稿を作成", '/postit' %></div>
+  <div><%= link_to "マイページへ", @user %></div>
+</div>
+<aside>
+  <h2>タイムライン</h2>
+  <%= render 'shared/feed' %>
+</aside>

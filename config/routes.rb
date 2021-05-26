@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   root to: 'static_pages#home'
 
-  get '/user_index', to: 'users#index'
-  get '/signup',     to: 'users#new'
-  post '/signup',    to: 'users#create'
+  get   '/user_index',    to: 'users#index'
+  get   '/signup',        to: 'users#new'
+  post  '/signup',        to: 'users#create'
+  get   '/edit_user/:id', to: 'users#edit', as: 'edit_user'
+  patch '/edit_user/:id', to: 'users#update'
 
   get '/login',      to: 'sessions#new'
   post '/login',     to: 'sessions#create'
@@ -14,5 +16,5 @@ Rails.application.routes.draw do
   post '/postit',        to: 'microposts#create'
   delete '/posts/:id',   to: 'microposts#destroy', as: 'delete_post'
 
-  resources :users, only:[:show,:edit,:update,:destroy]
+  resources :users, only:[:show,:destroy]
 end

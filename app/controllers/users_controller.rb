@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.where.not(id: current_user.id).page(params[:page])
+    @users = User.where.not("id = ?",current_user.id).page(params[:page])
   end
 
   def new
@@ -29,11 +29,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = current_user
     if @user.update(user_params)
       flash[:success] = "プロフィールを更新しました。"
       redirect_to @user

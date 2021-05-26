@@ -1,6 +1,6 @@
 <li>
   <section>
-    <h2><%= micropost.shop_name %> | <%= micropost.menu_name %></h2>
+    <h3><%= micropost.shop_name %> | <%= micropost.menu_name %></h3>
     <p><%= micropost.content %></p>
     <small>Posted at <%= micropost.created_at.year %>/<%= micropost.created_at.month %>/<%= micropost.created_at.day %> <%= micropost.created_at.hour %>:<%= micropost.created_at.min %><br>
     by <%= link_to micropost.user.handle, micropost.user %>.</small>

@@ -226,3 +226,10 @@
 2021-05-25 22:48:25.092 JST [24645] ERROR:  database "mencek_development" is being accessed by other users
 2021-05-25 22:48:25.092 JST [24645] DETAIL:  There is 1 other session using the database.
 2021-05-25 22:48:25.092 JST [24645] STATEMENT:  DROP DATABASE IF EXISTS "mencek_development"
+2021-05-26 03:19:36.091 JST [16035] LOG:  received fast shutdown request
+2021-05-26 03:19:36.091 JST [16035] LOG:  aborting any active transactions
+2021-05-26 03:19:36.092 JST [29043] FATAL:  terminating connection due to administrator command
+2021-05-26 03:19:36.092 JST [29013] FATAL:  terminating connection due to administrator command
+2021-05-26 03:19:36.094 JST [16035] LOG:  background worker "logical replication launcher" (PID 16042) exited with exit code 1
+2021-05-26 03:19:36.094 JST [16037] LOG:  shutting down
+2021-05-26 03:19:36.106 JST [16035] LOG:  database system is shut down
