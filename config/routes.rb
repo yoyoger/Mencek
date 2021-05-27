@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'relationships/create'
+  get 'relationships/destroy'
   root to: 'static_pages#home'
 
   get   '/user_index',    to: 'users#index'
@@ -17,4 +19,10 @@ Rails.application.routes.draw do
   delete '/posts/:id',   to: 'microposts#destroy', as: 'delete_post'
 
   resources :users, only:[:show,:destroy]
+  resources :users, only:[:following,:followers] do
+    member do
+      get :following, :followers
+    end
+  end
+  resources :relationships, only:[:create,:destroy]
 end

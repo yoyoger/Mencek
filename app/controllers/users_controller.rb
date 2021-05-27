@@ -48,6 +48,12 @@ class UsersController < ApplicationController
     redirect_to user_index_url
   end
 
+  def following
+  end
+
+  def followers
+  end
+
   private
 
     def user_params
