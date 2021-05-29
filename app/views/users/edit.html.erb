@@ -1,18 +1,15 @@
 <% provide(:title, "プロフィール編集") %>
-<h1>プロフィールの編集</h1>
-<div class="form">
-  <%= form_with model: @user, url: edit_user_url(@user), local: true do |form| %>
-    <%= render 'shared/error_messages', object: form.object %>
-    <dl>
-      <dt>ユーザーネーム</dt>
-      <dd><%= form.text_field :handle %></dd>
-      <dt>メールアドレス</dt>
-      <dd><%= form.email_field :email %></dd>
-      <dt>パスワード</dt>
-      <dd><%= form.password_field :password %></dd>
-      <dt>パスワード確認</dt>
-      <dd><%= form.password_field :password_confirmation, placeholder: "確認用" %></dd>
-    </dl>
-    <%= form.submit "更新", class:"btn" %>
-  <% end %>
+<div id="edit-user" class="user-form content">
+  <h1>プロフィールの編集</h1>
+  <div class="form">
+    <%= form_with model: @user, url: edit_user_url(@user), local: true do |form| %>
+      <%= render 'shared/error_messages', object: form.object %>
+      <div><p>ユーザーネーム</p><%= form.text_field :handle %></div>
+      <div><p>メールアドレス</p><%= form.email_field :email %></div>
+      <div><p>パスワード</p><%= form.password_field :password %></div>
+      <small>※6文字以上</small>
+      <div><p>パスワード確認</p><%= form.password_field :password_confirmation, placeholder: "確認用" %></div>
+      <%= form.submit "更新", class:"btn" %>
+    <% end %>
+  </div>
 </div>

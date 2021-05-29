@@ -1,11 +1,11 @@
-<div id="home_logged_in">
+<div id="home_logged_in" class="content clearfix">
   <h1><%= greeting %>、<%= @user.handle %> さん。</h1>
   <div class="main">
-    <div><%= link_to "新しい投稿を作成", '/postit' %></div>
-    <div><%= link_to "マイページへ", @user %></div>
+    <h2 class="icon">タイムライン</h2>
+    <%= render 'shared/feed' %>
   </div>
   <aside>
-    <h2>タイムライン</h2>
-    <%= render 'shared/feed' %>
+    <%= link_to "新しい投稿を作成", '/postit', class:"icon" %>
+    <%= link_to "マイページへ", @user, class:"icon" %>
   </aside>
 </div>

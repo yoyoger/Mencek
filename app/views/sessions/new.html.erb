@@ -1,18 +1,15 @@
 <% provide(:title, 'ログイン') %>
-
-<h1>ログイン</h1>
-<div class="form">
-  <%= form_with scope: :session, url: login_url, local: true do |form| %>
-    <dl>
-      <dt>メールアドレス</dt>
-      <dd><%= form.email_field :email %></dd>
-      <dt>パスワード</dt>
-      <dd><%= form.password_field :password %></dd>
-    </dl>
-    <%= form.submit "ログイン", class:"btn" %>
-  <% end %>
-</div>
-<p class="to_signup">
-  アカウントをお持ちでない方は
-  <a href='/signup' class="small_link">こちら</a>
-</p>
+<section id="login" class="user-form content">
+  <h1>ログイン</h1>
+  <div class="form">
+    <%= form_with scope: :session, url: login_url, local: true do |form| %>
+      <div><p>メールアドレス</p><%= form.email_field :email %></div>
+      <div><p>パスワード</p><%= form.password_field :password %></div>
+      <%= form.submit "ログイン", class:"btn" %>
+    <% end %>
+    <p class="to_signup">
+      アカウントをお持ちでない方は
+      <a href='/signup'>こちら</a>
+    </p>
+  </div>
+</section>

@@ -233,3 +233,18 @@
 2021-05-26 03:19:36.094 JST [16035] LOG:  background worker "logical replication launcher" (PID 16042) exited with exit code 1
 2021-05-26 03:19:36.094 JST [16037] LOG:  shutting down
 2021-05-26 03:19:36.106 JST [16035] LOG:  database system is shut down
+2021-05-29 14:41:00.221 JST [13733] LOG:  starting PostgreSQL 13.2 on x86_64-apple-darwin20.3.0, compiled by Apple clang version 12.0.0 (clang-1200.0.32.29), 64-bit
+2021-05-29 14:41:00.223 JST [13733] LOG:  listening on IPv6 address "::1", port 5432
+2021-05-29 14:41:00.223 JST [13733] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-05-29 14:41:00.224 JST [13733] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-05-29 14:41:00.241 JST [13734] LOG:  database system was shut down at 2021-05-28 23:03:14 JST
+2021-05-29 14:41:00.247 JST [13733] LOG:  database system is ready to accept connections
+2021-05-29 18:16:02.333 JST [17643] FATAL:  database "postgresql" does not exist
+2021-05-29 18:16:08.370 JST [17646] FATAL:  database "postgresql" does not exist
+2021-05-29 18:16:15.057 JST [17650] FATAL:  database "postgre" does not exist
+2021-05-29 21:18:11.889 JST [13733] LOG:  received fast shutdown request
+2021-05-29 21:18:11.889 JST [13733] LOG:  aborting any active transactions
+2021-05-29 21:18:11.891 JST [17671] FATAL:  terminating connection due to administrator command
+2021-05-29 21:18:11.892 JST [13733] LOG:  background worker "logical replication launcher" (PID 13740) exited with exit code 1
+2021-05-29 21:18:11.894 JST [13735] LOG:  shutting down
+2021-05-29 21:18:11.909 JST [13733] LOG:  database system is shut down

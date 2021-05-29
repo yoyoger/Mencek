@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        handle: ユーザーネーム
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用
+      micropost:
+        shop_name: 店名
+        menu_name: 品名
+        content: レビュー
