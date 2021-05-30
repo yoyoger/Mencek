@@ -26,7 +26,7 @@ class User < ApplicationRecord
   end
 
   def feed
-    Micropost.where("user_id=?", id)
+    Micropost.where("user_id=?", id).order(created_at: "DESC")
   end
 
   def follow(other_user)

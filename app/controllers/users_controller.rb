@@ -6,11 +6,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @microposts = @user.microposts.page(params[:page]).per(5)
+    @microposts = @user.microposts.order(created_at: "DESC").page(params[:page]).per(5)
   end
 
   def index
-    @users = User.where.not("id = ?",current_user.id).page(params[:page])
+    @users = User.where.not("id = ?",current_user.id).order("RANDOM()").page(params[:page]).per(10)
   end
 
   def new
@@ -45,7 +45,11 @@ class UsersController < ApplicationController
   def destroy
     User.find(params[:id]).destroy
     flash[:danger]= "ユーザーを削除しました。"
-    redirect_to user_index_url
+    if current_user.admin?
+      redirect_to user_index_url
+    else
+      redirect_to root_url
+    end
   end
 
   def following

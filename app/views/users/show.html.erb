@@ -1,18 +1,26 @@
 <% provide(:title, "#{@user.handle}さん")  %>
-<h1><%= @user.handle %> さんのページ</h1>
-<p>投稿数: <%= @user.microposts.count %></p>
+<div id="mypage" class="content clearfix">
+  <h1><%= @user.handle %> さんのページ</h1>
 
-<% if @user.microposts.any? %>
-  <ol class="posts">
-    <%= render @microposts %>
-  </ol>
-  <%= paginate @microposts %>
-<% else %>
-  <h2>まだ投稿がありません。</h2>
-<% end %>
+  <div class="main">
+    <% if @user.microposts.any? %>
+      <h2>投稿</h2>
+      <ol class="posts">
+        <%= render @microposts %>
+      </ol>
+      <%= paginate @microposts %>
+    <% else %>
+      <h2>まだ投稿がありません。</h2>
+    <% end %>
+  </div>
 
-<div id="delete_button_for_admin">
-  <% if current_user.admin? && !current_user?(@user) %>
-    <%= link_to "ユーザー削除", @user, method: :delete, data: { confirm: "本当に削除してよろしいですか？" }, class: "btn" %>
-  <% end %>
+  <aside>
+    <p>投稿数: <%= @user.microposts.count %></p>
+    <% if current_user?(@user) %>
+      <%= link_to "新しい投稿を作成", '/postit', class:"icon" %>
+    <% end %>
+    <% if current_user.admin? && !current_user?(@user) %>
+      <%= link_to "ユーザー削除", @user, method: :delete, data: { confirm: "本当に削除してよろしいですか？" }, class: "delete-btn" %>
+    <% end %>
+  </aside>
 </div>

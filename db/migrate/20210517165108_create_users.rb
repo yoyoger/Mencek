@@ -1,8 +1,8 @@
 class CreateUsers < ActiveRecord::Migration[6.1]
   def change
     create_table :users do |t|
-      t.string :handle
-      t.string :email
+      t.varchar(50) :handle
+      t.text :email
 
       t.timestamps
     end

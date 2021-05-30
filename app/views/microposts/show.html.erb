@@ -1,19 +1,29 @@
 <% provide(:title,"投稿情報") %>
-<section>
-  <h2>投稿情報</h2>
-  <table>
-    <tr>
-      <th>店名</th><td><%= @micropost.shop_name %></td>
-    </tr>
-    <tr>
-      <th>メニュー</th><td><%= @micropost.menu_name %></td>
-    </tr>
-    <tr>
-      <th>レビュー</th><td><%= @micropost.content %></td>
-    </tr>
-  </table>
-  <% if ( current_user?(@micropost.user) || current_user.admin? ) %>
-    <div><%= link_to "この投稿を削除する", delete_post_path(@micropost), method: :delete, data: {confirm: "本当によろしいですか？"} %></div>
-  <% end %>
-  <div><%= link_to "戻る", user_path(@micropost.user_id) %></div>
-</section>
+<div id="post-detail" class="content clearfix">
+  <section class="main">
+    <h2 class="icon">投稿情報</h2>
+    <table>
+      <tr>
+        <th>店名</th><td><%= @micropost.shop_name %></td>
+      </tr>
+      <tr>
+        <th>注文/購入した品</th><td><%= @micropost.menu_name %></td>
+      </tr>
+      <tr>
+        <th>レビュー</th><td><p class="review"><%= @micropost.content %></p></td>
+      </tr>
+    </table>
+    <% if ( current_user?(@micropost.user) || current_user.admin? ) %>
+      <div><%= link_to "この投稿を削除する", delete_post_path(@micropost), method: :delete, data: {confirm: "本当によろしいですか？"},class:"delete-btn" %></div>
+    <% end %>
+    <div><%= link_to "戻る", user_path(@micropost.user_id) %></div>
+  </section>
+  <aside>
+    <p>投稿者: <%= @user.handle %> さん</p>
+    <p>投稿数: <%= @user.microposts.count %></p>
+    <div class="divider"></div>
+    <% if current_user?(@user) %>
+      <%= link_to "新しい投稿を作成", '/postit' %>
+    <% end %>
+  </aside>
+</div>

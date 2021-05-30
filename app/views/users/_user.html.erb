@@ -1,6 +1,6 @@
 <li>
   <%= link_to user.handle, user %>
   <% if current_user.admin? && !current_user?(user) %>
-   | <%= link_to "ユーザー削除", user, method: :delete, data: { confirm: "本当に削除してよろしいですか？" }, class: "btn" %>
+   | <%= link_to "削除", user, method: :delete, data: { confirm: "本当に削除してよろしいですか？" }, class: "delete-btn" %>
   <% end %>
 </li>

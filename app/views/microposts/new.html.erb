@@ -1,18 +1,24 @@
 <% provide(:title, "投稿する") %>
-<section>
-  <h1>新しく投稿する</h1>
-  <div class="form">
-    <%= form_with model: @micropost, url: '/postit', local: true do |form| %>
-      <%= render 'shared/error_messages', object: form.object %>
-      <dl>
-        <dt>店名</dt>
-        <dd><%= form.text_field :shop_name %></dd>
-        <dt>注文/購入した品</dt>
-        <dd><%= form.text_field :menu_name %></dd>
-        <dt>レビュー</dt>
-        <dd><%= form.text_area :content %></dd>
-      </dl>
-      <%= form.submit "投稿する", class:"btn" %>
-    <% end %>
-  </div>
-</section>
+<div class="content">
+  <section id="postit">
+    <h1>新しく投稿する</h1>
+    <div class="form">
+      <%= form_with model: @micropost, url: '/postit', local: true do |form| %>
+        <%= render 'shared/error_messages', object: form.object %>
+        <table>
+          <tr>
+            <th>店名</th><td><%= form.text_field :shop_name %></td>
+          </tr>
+          <tr>
+            <th>注文/購入した品</th><td><%= form.text_field :menu_name %></td>
+          </tr>
+          <tr>
+            <th>レビュー</th><td><%= form.text_area :content %></td>
+          </tr>
+        </table>
+        <small>※ 虚偽の内容や度を超した批判、誹謗中傷はお止めください。</small>
+        <%= form.submit "投稿する", class:"btn" %>
+      <% end %>
+    </div>
+  </section>
+</div>

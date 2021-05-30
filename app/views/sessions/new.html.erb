@@ -1,21 +1,15 @@
 <% provide(:title, 'ログイン') %>
-<div class="jumbotron login form">
-  <div class="container">
-    <h1>ログイン</h1>
-
-    <%= form_for(:session, url: login_path) do |f| %>
-
-      <%= f.label :email, "メールアドレス" %>
-      <%= f.email_field :email, class:'form-control' %>
-
-      <%= f.label :password, "パスワード" %>
-      <%= f.password_field :password, class:'form-control' %>
-
-      <%= f.submit "ログイン", class: "btn btn-primary btn-mencek btn-login" %>
+<section id="login" class="user-form content">
+  <h1>ログイン</h1>
+  <div class="form">
+    <%= form_with scope: :session, url: login_url, local: true do |form| %>
+      <div><p>メールアドレス</p><%= form.email_field :email %></div>
+      <div><p>パスワード</p><%= form.password_field :password %></div>
+      <%= form.submit "ログイン", class:"btn" %>
     <% end %>
     <p class="to_signup">
       アカウントをお持ちでない方は
-      <a href='/signup' class="small_link">こちら</a>
+      <a href='/signup'>こちら</a>
     </p>
   </div>
-</div>
+</section>

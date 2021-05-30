@@ -1,7 +1,7 @@
 class CreateMicroposts < ActiveRecord::Migration[6.1]
   def change
     create_table :microposts do |t|
-      t.text :content
+      t.varchar(255) :content
       t.references :user, foreign_key: true
 
       t.timestamps
