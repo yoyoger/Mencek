@@ -277,6 +277,7 @@ footer {
   .content {
     width: 960px;
     margin: 0 auto;
+    /* サイドバー */
     aside {
       box-sizing: border-box;
       float:right;
@@ -284,6 +285,40 @@ footer {
       width: 240px;
       padding: 20px 10px;
       margin-top: 20px;
+      /* スタッツ( shared/_stats ) */
+      .user-stats {
+        table {
+          border-spacing: 0;
+          border-collapse: collapse;
+          text-align: center;
+          line-height: 1.2;
+          .row1, .row2 {
+            height: 36px;
+          }
+          .row1 {
+            border-bottom: 1px dashed #cacaca;
+          }
+          th {
+            font-weight:lighter;
+            font-size: 16px;
+          }
+          td {
+            font-weight: bold;
+          }
+          th, td {
+            // border: 1px solid #504f4f;
+            width: 109px;
+          }
+        }
+        .divider {
+          border-top: 1px dashed #cacaca;
+          margin-bottom: 10px;
+        }
+        .strong-divider {
+          border-top: 1px solid #808080;
+          margin: 10px 0;
+        }
+      }
     }
   }
 }

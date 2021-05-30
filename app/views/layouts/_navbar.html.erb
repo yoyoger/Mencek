@@ -6,7 +6,7 @@
       <ul class="global-nav dropdown-menu">
         <% if logged_in? %>
         <li><%= link_to "他のユーザー", '/user_index' %></li>
-        <li><a href="#"><%= current_user.handle %></a>
+        <li><%= link_to current_user.handle, current_user %>
           <ul>
             <li><%= link_to "マイページ", current_user %></li>
             <li><%= link_to "プロフィール編集", edit_user_path(current_user) %></li>

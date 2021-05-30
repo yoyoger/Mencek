@@ -1,0 +1,25 @@
+<% @user ||= current_user %>
+<div class="user-stats">
+  <table>
+    <tr class="row1">
+      <th>ユーザー</th><td><%= @user.handle %></td>
+    </tr>
+    <tr class="row2">
+      <th>投稿数</th><td><%= @user.microposts.count %></td>
+    </tr>
+  </table>
+  <div class="divider"></div>
+  <table>
+    <tr>
+      <th>フォロー</th><th>フォロワー</th>
+    </tr>
+    <tr>
+    <% if current_user?(@user) %>
+      <td><%= link_to @user.following.count, following_user_path(@user) %></td><td><%= link_to @user.followers.count, followers_user_path(@user) %></td>
+    <% else %>
+      <td><%= @user.following.count %></td><td><%= @user.followers.count %></td>
+    <% end %>
+    </tr>
+  </table>
+  <div class="strong-divider"></div>
+</div>

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:show, :index, :edit, :update, :destroy]
-  before_action :correct_user, only: [:edit, :update]
+  before_action :correct_user, only: [:edit, :update, :following, :followers]
   before_action :not_logged_in, only: [:new, :create]
   before_action :can_delete_user, only: :destroy
 
@@ -53,9 +53,17 @@ class UsersController < ApplicationController
   end
 
   def following
+    @title = "#{current_user.handle} さんがフォローしているユーザー"
+    @user = current_user
+    @users = @user.following.order("relationships.created_at DESC").page(params[:page]).per(20)
+    render 'show_follow'
   end
 
   def followers
+    @title = "#{current_user.handle} さんのフォロワー"
+    @user = current_user
+    @users = @user.followers.order("relationships.created_at DESC").page(params[:page]).per(20)
+    render 'show_follow'
   end
 
   private
