@@ -17,7 +17,7 @@
     <% if current_user?(@user) %>
       <td><%= link_to @user.following.count, following_user_path(@user) %></td><td><%= link_to @user.followers.count, followers_user_path(@user) %></td>
     <% else %>
-      <td><%= @user.following.count %></td><td><%= @user.followers.count %></td>
+      <td><%= @user.following.count %></td><td id="followers"><%= @user.followers.count %></td>
     <% end %>
     </tr>
   </table>

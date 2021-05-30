@@ -20,8 +20,10 @@
     <%= render 'layouts/navbar' %>
 
     <div class="wrap">
-      <%= render 'layouts/flash_messages' %>
-
+      <% unless flash[:login] %>
+        <%= render 'layouts/flash_messages' %>
+      <% end %>
+      
       <%= yield %>
     </div>
 

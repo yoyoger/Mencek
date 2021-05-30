@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       log_in user
       redirect_back_or root_url
     else
-      flash.now[:danger] = "入力されたメールアドレスまたはパスワードに誤りがあります。"
+      flash.now[:login] = "入力されたメールアドレスまたはパスワードに誤りがあります。"
       render 'new'
     end
   end

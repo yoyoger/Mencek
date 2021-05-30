@@ -2,9 +2,13 @@
 <section id="login" class="user-form content">
   <h1>ログイン</h1>
   <div class="form">
+    <% if flash[:login] %>
+      <%= render 'layouts/flash_messages' %>
+    <% end %>
     <%= form_with scope: :session, url: login_url, local: true do |form| %>
       <div><p>メールアドレス</p><%= form.email_field :email %></div>
-      <div><p>パスワード</p><%= form.password_field :password %></div>
+      <div class="login-pass"><p>パスワード</p><%= form.password_field :password %></div>
+      <small>※6文字以上</small>
       <%= form.submit "ログイン", class:"btn" %>
     <% end %>
     <p class="to_signup">

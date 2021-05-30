@@ -162,6 +162,18 @@ body {
       text-decoration: none;
     }
   }
+  /* フラッシュメッセージ */
+  .alert-success {
+    background-color: #ccffc2;
+    border: 3px solid #a6ff94;
+    border-radius: 3px;
+  }
+  .alert-success, .alert-danger {
+    box-sizing: border-box;
+    width: 960px;
+    margin: 0 auto;
+    text-align: center;
+  }
   /* エラーメッセージ */
   #error_explanation {
     background-color: #ff00003b;
@@ -171,6 +183,19 @@ body {
     li {
       color: #504f4f;
       font-size: smaller;
+    }
+  }
+  .alert-login, .alert-danger {
+    background-color: #ff00003b;
+    border: 3px solid #ff000080;
+    border-radius: 3px;
+  }
+  .alert-login {
+    line-height: 1.2;
+    padding: 0;
+    div {
+      margin: 15px !important;
+      font-size: 16px;
     }
   }
 }
@@ -454,7 +479,7 @@ footer {
     .posts {
       background-color: #ffffff;
       overflow-y: scroll;
-      height: calc(100vh - 84px); /* h2とスクロールバーがすっぽり収まるように */
+      max-height: calc(100vh - 84px); /* h2とスクロールバーがすっぽり収まるように */
       margin-bottom: 10px;
     }
   }
@@ -462,6 +487,10 @@ footer {
     p, .icon {
       display: block;
       font-size: 18px;
+    }
+    .follow-btn, .unfollow-btn {
+      box-sizing: border-box;
+      width: 220px ;
     }
   }
 }
