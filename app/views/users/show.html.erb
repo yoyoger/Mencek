@@ -2,7 +2,7 @@
 <div id="mypage" class="content clearfix">
   <h1><%= @user.handle %> さんのページ</h1>
 
-  <div class="main">
+  <div class="microposts">
     <% if @user.microposts.any? %>
       <h2>投稿</h2>
       <ol class="posts">

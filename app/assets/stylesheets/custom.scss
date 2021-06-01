@@ -79,6 +79,14 @@ body {
     padding-right: 10px;
     border-left: 5px solid #ff0000;
   }
+  /* フォームの必須項目マーク */
+  .required::after {
+    display: inline;
+    vertical-align: text-top;
+    content: " * ";
+    font-size: 10px;
+    color: #ff0000;
+  }
   /* ページネーション */
   .pagination {
     span a {
@@ -116,6 +124,22 @@ body {
     p {
       line-height: 1.5;
       margin-bottom: 10px;
+      a {
+        font-size: medium;
+        line-height: 1;
+        color: #3f3f3f;
+      }
+    }
+    .pics {
+      width: 575px;
+      overflow-x: scroll;
+      white-space: nowrap;
+    }
+    .no-pics {
+      background-color: #f0f0f0;
+      border-radius: 5px;
+      margin: 10px 0;
+      padding-left: 10px;
     }
     small {
       display: block;
@@ -434,26 +458,27 @@ footer {
     }
   }
 }
+/* フィード外枠(/, /users/:id) */
+.microposts {
+  box-sizing: border-box;
+  float: left;
+  width:700px;
+  padding:20px;
+  h2 {
+    margin-bottom: 24px;
+  }
+  .posts {
+    background-color: #ffffff;
+    overflow-y: scroll;
+    // height: calc(150vh);
+    margin-bottom: 10px;
+  }
+}
 
 /* ログイン後ホーム(/) */
 #home_logged_in {
   h1 {
     margin: 0 0 24px 20px;
-  }
-  .main {
-    box-sizing: border-box;
-    float: left;
-    width:700px;
-    padding:20px;
-    h2 {
-      margin-bottom: 24px;
-    }
-    .posts {
-      background-color: #ffffff;
-      overflow-y: scroll;
-      height: calc(100vh - 84px);
-      margin-bottom: 10px;
-    }
   }
   aside {
     a {
@@ -467,21 +492,6 @@ footer {
 #mypage {
   h1 {
     margin: 0 0 24px 20px;
-  }
-  .main {
-    box-sizing: border-box;
-    float: left;
-    width:700px;
-    padding:20px;
-    h2 {
-      margin-bottom: 24px;
-    }
-    .posts {
-      background-color: #ffffff;
-      overflow-y: scroll;
-      max-height: calc(100vh - 84px); /* h2とスクロールバーがすっぽり収まるように */
-      margin-bottom: 10px;
-    }
   }
   aside {
     p, .icon {
@@ -527,9 +537,11 @@ footer {
         vertical-align: top;
         border: 1px solid #cccccc;
         line-height: 1.7;
-        p.review {
-          display: inline-block;
-          margin-bottom: 34px;
+        div.pics {
+          width: 485px;
+          overflow-x: scroll;
+          padding-bottom: 34px;
+          white-space: nowrap;
         }
       }
     }
@@ -566,12 +578,20 @@ footer {
       border: 2px solid #cccccc;
       th {
         width: 150px;
+        padding-top: 4px;
         padding-left: 10px;
         vertical-align: top;
         text-align: left;
         font-size: 18px;
         background-color: #f0f0f0;
         border: 1px solid #cccccc;
+        p {
+          display:inline;
+        }
+        .reference-mark {
+          display: inline;
+          font-size: 10px;
+        }
       }
       td {
         padding-left: 8px;
@@ -581,7 +601,6 @@ footer {
         input, textarea {
           font-family: initial;
           background-color: #ffffff;
-          height: 25px;
           padding: 5px;
           font-size: 16px;
           border: 2px solid #a00000;
@@ -590,6 +609,12 @@ footer {
             border: medium solid #ff0000;
             padding: 4px;
           }
+        }
+        input[type="file" i] {
+          width: 264px;
+          border: none;
+          cursor: pointer;
+          align-items: center;
         }
         textarea {
           width: 460px;
@@ -604,9 +629,16 @@ footer {
     }
     small {
       display: block;
-      font-size: 14px;
-      line-height: 1;
+      font-size: 13px;
+      line-height: 1.3;
       margin-bottom: 20px;
     }
+    .btn {
+      margin-bottom: 20px;
+    }
+  }
+  .link {
+    font-size: 18px;
+    line-height: 1.3;
   }
 }

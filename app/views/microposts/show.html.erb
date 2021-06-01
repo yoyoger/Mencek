@@ -10,13 +10,25 @@
         <th>注文/購入した品</th><td><%= @micropost.menu_name %></td>
       </tr>
       <tr>
-        <th>レビュー</th><td><p class="review"><%= @micropost.content %></p></td>
+        <th>写真</th>
+        <td>
+          <% if @micropost.pictures.attached? %>
+            <div class="pics">
+              <% @micropost.pictures.each do |pic| %>
+                <%= image_tag pic.variant(gravity: :center, resize:"300x400^", crop:"300x400+0+0").processed %>
+              <% end %>
+            </div>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th>レビュー</th><td class="review"><div><%= @micropost.content %></div></td>
       </tr>
     </table>
     <% if ( current_user?(@micropost.user) || current_user.admin? ) %>
       <div><%= link_to "この投稿を削除する", delete_post_path(@micropost), method: :delete, data: {confirm: "本当によろしいですか？"},class:"delete-btn" %></div>
     <% end %>
-    <div><%= link_to "戻る", user_path(@micropost.user_id) %></div>
+    <div><%= link_to "≪ 戻る", user_path(@micropost.user_id) %></div>
   </section>
   <aside>
     <p>投稿者: <%= @user.handle %> さん</p>

@@ -7,18 +7,26 @@
         <%= render 'shared/error_messages', object: form.object %>
         <table>
           <tr>
-            <th>店名</th><td><%= form.text_field :shop_name %></td>
+            <th><p class="required">店名</p></th><td><%= form.text_field :shop_name %></td>
           </tr>
           <tr>
-            <th>注文/購入した品</th><td><%= form.text_field :menu_name %></td>
+            <th><p class="required">注文/購入した品</p></th><td><%= form.text_field :menu_name %></td>
           </tr>
           <tr>
-            <th>レビュー</th><td><%= form.text_area :content %></td>
+            <th><p>写真</p><small class="reference-mark">※1</small></th>
+            <td><%= form.file_field :pictures, multiple: true, class:"input-files" %></td>
+          </tr>
+          <tr>
+            <th><p class="required">レビュー</p><small class="reference-mark">※2</small></th>
+            <td><%= form.text_area :content %></td>
           </tr>
         </table>
-        <small>※ 虚偽の内容や度を超した批判、誹謗中傷はお止めください。</small>
+        <small>※1 最大３枚、サイズは各５MBまで。形式は.jpeg(.jpg)又は.pngのみ。<br>
+               ※2 虚偽の内容や度を超した批判、誹謗中傷はお止めください。</small>
         <%= form.submit "投稿する", class:"btn" %>
       <% end %>
     </div>
+    <div class="link"><%= link_to "≪ マイページへ", current_user %></div>
+    <div class="link"><%= link_to "≪ ホームへ", root_path %></div>
   </section>
 </div>

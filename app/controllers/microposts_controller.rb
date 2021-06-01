@@ -30,7 +30,7 @@ class MicropostsController < ApplicationController
 
   private
     def micropost_params
-      params.require(:micropost).permit(:shop_name,:menu_name,:content)
+      params.require(:micropost).permit(:shop_name,:menu_name,:content,pictures:[])
     end
 
     def can_delete_user
