@@ -8,6 +8,7 @@ class User < ApplicationRecord
                                   dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+  has_one_attached :icon
   before_save { self.email = email.downcase }
   validates :handle, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
@@ -16,6 +17,7 @@ class User < ApplicationRecord
             uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum:6 }, allow_nil: true
+  validate :icon_type, :icon_size
 
 
   # 渡された文字列のハッシュ値を返す
@@ -40,4 +42,25 @@ class User < ApplicationRecord
   def following?(other_user)
     following.include?(other_user)
   end
+
+  def icon_normal
+    icon.variant(gravity: :center, resize:"100x100^", crop:"100x100+0+0").processed
+  end
+
+  def icon_small
+    icon.variant(gravity: :center, resize:"50x50^", crop:"50x50+0+0").processed
+  end
+
+  private
+    def icon_type
+        if !icon.blob.content_type.in?(%('image/jpeg image/png'))
+          errors.add(:icon, 'はjpegまたはpng形式でアップロードしてください')
+        end
+    end
+
+    def icon_size
+        if icon.blob.byte_size > 5.megabytes
+          errors.add(:icon, "はサイズ5MB以内にしてください")
+        end
+    end
 end

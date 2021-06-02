@@ -1,12 +1,17 @@
 <header>
     <div class="logo">
-      <%= link_to image_tag("header.png"), '/', alt:"logo" %>
+      <%= link_to image_tag("header.png"), '/', alt:"ロゴ" %>
     </div>
     <nav>
       <ul class="global-nav dropdown-menu">
         <% if logged_in? %>
         <li><%= link_to "他のユーザー", '/user_index' %></li>
-        <li><%= link_to current_user.handle, current_user %>
+        <li class="user-icon-box">
+        <% if current_user.icon.attached? %>
+          <%= link_to image_tag(current_user.icon_small, class:"small-icon"), current_user, alt:"ユーザーアイコン" %>
+        <% else %>
+          <%= link_to image_tag("mencek_icon_default.gif", width:"50", height:"50", class:"small-icon"), current_user, alt:"ユーザーアイコン" %>
+        <% end %>
           <ul>
             <li><%= link_to "マイページ", current_user %></li>
             <li><%= link_to "プロフィール編集", edit_user_path(current_user) %></li>

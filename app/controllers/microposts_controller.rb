@@ -23,9 +23,13 @@ class MicropostsController < ApplicationController
   end
 
   def destroy
+    @user = @micropost.user
+    @micropost.pictures.each do |pic|
+      pic.purge
+    end
     @micropost.destroy
     flash[:success] = "削除しました。"
-    redirect_to request.referrer || root_url
+    redirect_to @user
   end
 
   private

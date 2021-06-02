@@ -19,7 +19,6 @@ class Micropost < ApplicationRecord
     def picture_size
       pictures.each do |picture|
         if picture.blob.byte_size > 5.megabytes
-          picture.purge
           errors.add(:pictures, "は各ファイル5MB以内にしてください")
         end
       end
@@ -27,7 +26,6 @@ class Micropost < ApplicationRecord
 
     def picture_length
       if pictures.length > 3
-        pictures.purge
         errors.add(:pictures, "は3枚以内にしてください")
       end
     end

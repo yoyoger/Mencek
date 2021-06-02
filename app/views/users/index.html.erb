@@ -1,11 +1,11 @@
 <% provide(:title, "他のユーザー") %>
 <section id="user-index" class="content">
-<h1>他のユーザー</h1>
+  <h1>他のユーザー</h1>
 
-<%= paginate @users %>
+  <%= paginate @users %>
 
-<ul class="users">
-  <%= render @users %>
-</ul>
+  <ul class="users clearfix">
+    <%= render @users %>
+  </ul>
 
-<%= paginate @users %>
+  <%= paginate @users %>

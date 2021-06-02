@@ -1,19 +1,17 @@
 <% provide(:title, @title) %>
-<div id="follow" class="content">
-  <section>
-    <h2><%= @title %></h2>
-    <% if @users.any? %>
-      <ol>
-        <%= render @users %>
-      </ol>
-      <%= paginate @users %>
-    <% else %>
-      <p>ユーザーがいません</p>
-    <% end %>
-    <% if current_user?(@user) %>
-      <%= link_to "マイページへ戻る", @user %>
-    <% else %>
-      <%= link_to "#{@user.handle} さんのページへ戻る",@user %>
-    <% end %>
-  </section>
-</div>
+<section id="follow" class="content">
+  <h1><%= @title %></h1>
+  <% if @users.any? %>
+    <ol class="clearfix">
+      <%= render @users %>
+    </ol>
+    <%= paginate @users %>
+  <% else %>
+    <p>ユーザーがいません</p>
+  <% end %>
+  <% if current_user?(@user) %>
+    <%= link_to "マイページへ戻る", @user %>
+  <% else %>
+    <%= link_to "#{@user.handle} さんのページへ戻る",@user %>
+  <% end %>
+</section>

@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.where.not("id = ?",current_user.id).order("RANDOM()").page(params[:page]).per(10)
+    @users = User.where.not("user_id = ?", current_user.id).joins(:microposts).group("users.id").select("users.*, MAX(microposts.created_at) micropost_created_at").order("MAX(microposts.created_at) DESC").page(params[:page]).per(9)
   end
 
   def new
@@ -35,6 +35,7 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
+      ActiveStorage::Blob.unattached.find_each(&:purge)
       flash[:success] = "プロフィールを更新しました。"
       redirect_to @user
     else
@@ -43,6 +44,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    User.find(params[:id]).icon.purge
     User.find(params[:id]).destroy
     flash[:danger]= "ユーザーを削除しました。"
     if current_user.admin?
@@ -53,23 +55,23 @@ class UsersController < ApplicationController
   end
 
   def following
-    @title = "#{current_user.handle} さんがフォローしているユーザー"
-    @user = current_user
-    @users = @user.following.order("relationships.created_at DESC").page(params[:page]).per(20)
+    @user = User.find(params[:id])
+    @title = "#{@user.handle} さんがフォローしているユーザー"
+    @users = @user.following.order("relationships.created_at DESC").page(params[:page]).per(9)
     render 'show_follow'
   end
 
   def followers
-    @title = "#{current_user.handle} さんのフォロワー"
-    @user = current_user
-    @users = @user.followers.order("relationships.created_at DESC").page(params[:page]).per(20)
+    @user = User.find(params[:id])
+    @title = "#{@user.handle} さんのフォロワー"
+    @users = @user.followers.order("relationships.created_at DESC").page(params[:page]).per(9)
     render 'show_follow'
   end
 
   private
 
     def user_params
-      params.require(:user).permit(:handle, :email, :password, :password_confirmation)
+      params.require(:user).permit(:icon,:handle, :email, :password, :password_confirmation)
     end
 
     def correct_user
