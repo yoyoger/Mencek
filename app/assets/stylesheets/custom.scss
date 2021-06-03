@@ -41,9 +41,9 @@ body {
   }
 
   input, textarea {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+    // -webkit-appearance: none;
+    // -moz-appearance: none;
+    // appearance: none;
     background: transparent;
     border: 1px solid #000000;
     border-radius: 0;
@@ -481,6 +481,28 @@ footer {
 
 /* ログイン（/login） */
 #login {
+  .checkbox {
+    box-sizing: border-box;
+    height: 30px;
+    margin: 0;
+    input[type="checkbox"] {
+      width: 15px;
+      height: 15px;
+      margin: 0;
+      vertical-align: middle;
+      &:focus {
+        border: 2px solid #a00000;
+        padding:5px;
+      }
+    }
+    p {
+      display: inline-block;
+      width: auto;
+      font-size: small;
+      line-height:1;
+      vertical-align: middle;
+    }
+  }
   .to_signup {
     margin: 20px 0;
     text-align: center;
