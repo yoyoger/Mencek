@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  attr_accessor :remember_token
+  attr_accessor :remember_token, :activation_token
+
   has_many :microposts, dependent: :destroy
   has_many :active_relationships, class_name: "Relationship",
                                   foreign_key: "follower_id",
@@ -10,7 +11,10 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
   has_one_attached :icon
-  before_save { self.email = email.downcase }
+
+  before_save :downcase_email
+  before_create :create_activation_digest
+
   validates :handle, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 },
@@ -34,16 +38,33 @@ class User < ApplicationRecord
     end
   end
 
+  # 渡されたトークンがダイジェストと一致したらtrueを返す
+  def authenticated?(attribute, token)
+    digest = send("#{attribute}_digest")
+    return false if digest.nil?
+    BCrypt::Password.new(digest).is_password?(token)
+  end
+
+  #ユーザーを有効化
+  def activate
+    update_columns(activated: true, activated_at: Time.zone.now)
+  end
+
+  #有効化トークンとダイジェストを作成及び代入する
+  def create_activation_digest
+    self.activation_token = User.new_token
+    self.activation_digest = User.digest(activation_token)
+  end
+
+  #有効化メールを送信
+  def send_activation_email
+    UserMailer.account_activation(self).deliver_now
+  end
+
   # 永続セッションのためにユーザーをデータベースに記憶する
   def remember
     self.remember_token = User.new_token
     update_attribute(:remember_digest, User.digest(remember_token))
-  end
-
-  # 渡されたトークンがダイジェストと一致したらtrueを返す
-  def authenticated?(remember_token)
-    return false if remember_digest.nil?
-    BCrypt::Password.new(remember_digest).is_password?(remember_token)
   end
 
   #ユーザーのログイン情報を破棄する
@@ -77,14 +98,22 @@ class User < ApplicationRecord
 
   private
     def icon_type
+      if icon.blob.present?
         if !icon.blob.content_type.in?(%('image/jpeg image/png'))
           errors.add(:icon, 'はjpegまたはpng形式でアップロードしてください')
         end
+      end
     end
 
     def icon_size
+      if icon.blob.present?
         if icon.blob.byte_size > 5.megabytes
           errors.add(:icon, "はサイズ5MB以内にしてください")
         end
+      end
+    end
+
+    def downcase_email
+      email.downcase!
     end
 end

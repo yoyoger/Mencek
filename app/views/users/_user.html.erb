@@ -5,4 +5,3 @@
     <%= link_to "削除", @user, method: :delete, data: { confirm: "本当に削除してよろしいですか？" }, class: "delete-btn" %>
   <% end %>
 </li>
-<% @user = User.find(params[:id]) %>

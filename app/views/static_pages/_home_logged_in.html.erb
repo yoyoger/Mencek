@@ -1,11 +1,21 @@
 <div id="home_logged_in" class="content clearfix">
-  <h1><%= greeting %>、<%= @user.handle %> さん。</h1>
-  <div class="microposts">
-    <h2 class="icon">タイムライン</h2>
-    <%= render 'shared/feed' %>
-  </div>
-  <aside>
-    <%= link_to "新しい投稿を作成", '/postit', class:"icon" %>
-    <%= link_to "マイページへ", @user, class:"icon" %>
-  </aside>
+  <% if @user.activated? %>
+    <h1><%= greeting %>、<%= @user.handle %> さん。</h1>
+    <div class="microposts">
+      <h2 class="icon">タイムライン</h2>
+      <%= render 'shared/feed' %>
+    </div>
+    <aside>
+      <%= link_to "新しい投稿を作成", '/postit', class:"icon" %>
+      <%= link_to "マイページへ", @user, class:"icon" %>
+    </aside>
+  <% else %>
+    <h2>いらっしゃいませ、<%= @user.handle %> さん。</h2>
+    <div class="not_activated">
+      <h3 class="icon">アカウントが認証されていません。</h3>
+      <%= link_to "・認証メールを再送信する", resend_activation_email_url, method: :patch, data: { confirm:"認証メールを送信します。よろしいですか？" } %>
+      <%= link_to "・ログアウト", logout_path, method: :delete %>
+      <%= link_to "・アカウントを削除する", current_user, method: :delete, data: { confirm: "本当に削除してよろしいですか？" } %>
+    </div>
+  <% end %>
 </div>

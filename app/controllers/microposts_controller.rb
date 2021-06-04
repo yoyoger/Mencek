@@ -1,11 +1,17 @@
 class MicropostsController < ApplicationController
   before_action :logged_in_user
+  before_action :activated_user
   before_action :can_delete_user, only: :destroy
 
 
   def show
-    @micropost = Micropost.find(params[:id])
-    @user = @micropost.user
+    @micropost = Micropost.find_by(id: params[:id])
+    if @micropost
+      @user = @micropost.user
+    else
+      flash[:danger] = "投稿が見つかりません。"
+      redirect_to root_url
+    end
   end
 
   def new

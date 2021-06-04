@@ -244,13 +244,17 @@ body {
   .alert-success {
     background-color: #ccffc2;
     border: 3px solid #a6ff94;
-    border-radius: 3px;
   }
-  .alert-success, .alert-danger {
+  .alert-info {
+    background-color: #bcefff;
+    border: 3px solid #5aa8c0;
+  }
+  .alert-success, .alert-danger, .alert-info {
     box-sizing: border-box;
     width: 960px;
     margin: 0 auto;
     text-align: center;
+    border-radius: 3px;
   }
   /* エラーメッセージ */
   #error_explanation {
@@ -539,6 +543,13 @@ footer {
       display: block;
       font-size: 18px;
     }
+  }
+  .not_activated {
+    background-color: #f0f0f0;
+    width: 400px;
+    border-radius: 3px;
+    margin-top: 20px;
+    padding: 10px;
   }
 }
 

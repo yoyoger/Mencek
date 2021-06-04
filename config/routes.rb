@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post  '/signup',        to: 'users#create'
   get   '/edit_user/:id', to: 'users#edit', as: 'edit_user'
   patch '/edit_user/:id', to: 'users#update'
+  patch  '/resend_activation_email',  to: 'users#resend_activation_email'
 
   get '/login',      to: 'sessions#new'
   post '/login',     to: 'sessions#create'
@@ -25,4 +26,5 @@ Rails.application.routes.draw do
     end
   end
   resources :relationships, only:[:create,:destroy]
+  resources :account_activations, only: [:edit]
 end

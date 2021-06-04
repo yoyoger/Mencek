@@ -9,4 +9,11 @@ class ApplicationController < ActionController::Base
       redirect_to login_url
     end
   end
+
+  def activated_user
+    if !current_user.activated?
+      flash[:danger] = "アカウントを認証してください。"
+      redirect_to root_url
+    end
+  end
 end

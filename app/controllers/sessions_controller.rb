@@ -9,6 +9,9 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       log_in user
       params[:session][:remember_me] == '1'? remember(user) : forget(user)
+      if !user.activated?
+        flash[:danger] = "このアカウントは認証されていません。送信されたメールからアカウントを認証してください。"
+      end
       redirect_back_or root_url
     else
       flash.now[:login] = "入力されたメールアドレスまたはパスワードに誤りがあります。"

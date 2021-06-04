@@ -9,6 +9,7 @@
   <% else %>
     <p>ユーザーがいません</p>
   <% end %>
+  <% @user = User.find(params[:id]) %>
   <% if current_user?(@user) %>
     <%= link_to "マイページへ戻る", @user %>
   <% else %>

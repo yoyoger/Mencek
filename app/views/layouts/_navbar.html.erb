@@ -4,7 +4,7 @@
     </div>
     <nav>
       <ul class="global-nav dropdown-menu">
-        <% if logged_in? %>
+      <% if (logged_in? && current_user.activated?) %>
         <li><%= link_to "他のユーザー", '/user_index' %></li>
         <li class="user-icon-box">
         <% if current_user.icon.attached? %>
@@ -27,10 +27,22 @@
           <% end %>
           </ul>
         </li>
-        <% else %>
+      <% elsif (logged_in? && !current_user.activated?) %>
+        <li class="user-icon-box">
+          <a href="#"><%= image_tag "mencek_icon_default.gif", width:"50", height:"50", class:"small-icon", alt:"ユーザーアイコン" %></a>
+          <ul>
+            <li>
+              <%= link_to "ログアウト", logout_path, method: :delete %>
+            </li>
+            <li>
+              <%= link_to "アカウント削除", current_user, method: :delete, data: { confirm: "本当に削除してよろしいですか？" } %>
+            </li>
+          </ul>
+        </li>
+      <% else %>
         <li><%= link_to "アカウント作成", '/signup' %></li>
         <li><%= link_to "ログイン", '/login' %></li>
-        <% end %>
+      <% end %>
       </ul>
     </nav>
 </header>
