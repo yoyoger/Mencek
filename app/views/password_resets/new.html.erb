@@ -1,0 +1,15 @@
+<% provide(:title, 'パスワードをお忘れの方' ) %>
+<section id="reset_password_email" class="user-form content">
+  <h1>パスワードをお忘れの方</h1>
+  <div class="form">
+    <p class="attention">入力頂いたメールアドレス宛にパスワード再設定用のメールを送信します。<br>
+       お間違えの無いようにお気を付けください。</p>
+    <% if flash[:login] %>
+      <%= render 'layouts/flash_messages' %>
+    <% end %>
+    <%= form_with scope: :password_reset, url: create_password_reset_path, local: true do |form| %>
+      <div><p>メールアドレス</p><%= form.email_field :email %></div>
+      <%= form.submit "送信", data: { confirm: "入力頂いたアドレスにメールを送信します。よろしいですか？" },class:"btn" %>
+    <% end %>
+  </div>
+</section>

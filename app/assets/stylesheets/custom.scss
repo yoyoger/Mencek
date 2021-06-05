@@ -507,13 +507,19 @@ footer {
       vertical-align: middle;
     }
   }
-  .to_signup {
+  .login_guide {
     margin: 20px 0;
     text-align: center;
     font-size: small;
     a {
       color: #ff0000;
     }
+  }
+}
+/* パスワード再設定メール送信フォーム(/password_resets/new) */
+#reset_password_email {
+  .attention {
+    font-size: 16px;
   }
 }
 /* フィード外枠(/, /users/:id) */

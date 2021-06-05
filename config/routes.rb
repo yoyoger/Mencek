@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'relationships/create'
-  get 'relationships/destroy'
   root to: 'static_pages#home'
 
   get   '/user_index',    to: 'users#index'
@@ -18,6 +16,11 @@ Rails.application.routes.draw do
   get '/postit',         to: 'microposts#new'
   post '/postit',        to: 'microposts#create'
   delete '/posts/:id',   to: 'microposts#destroy', as: 'delete_post'
+
+  get    '/password_reset',     to: 'password_resets#new', as: 'new_password_reset'
+  post   '/password_reset',     to: 'password_resets#create', as: 'create_password_reset'
+  get    '/password_reset/:id', to: 'password_resets#edit', as: 'edit_password_reset'
+  patch  '/password_reset/:id', to: 'password_resets#update', as: 'update_password_reset'
 
   resources :users, only:[:show,:destroy]
   resources :users, only:[:following,:followers] do
