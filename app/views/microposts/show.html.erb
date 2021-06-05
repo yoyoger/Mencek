@@ -22,7 +22,10 @@
         </td>
       </tr>
       <tr>
-        <th>レビュー</th><td class="review"><div><%= @micropost.content %></div></td>
+        <th>レビュー</th><td><div><%= @micropost.content %></div></td>
+      </tr>
+      <tr>
+        <th>投稿日時</th><td><div><%= @micropost.created_at.strftime('%Y年%m月%d日 %H:%M') %><div></td>
       </tr>
     </table>
     <% if ( current_user?(@micropost.user) || current_user.admin? ) %>
@@ -31,11 +34,6 @@
     <div><%= link_to "≪ 戻る", user_path(@micropost.user_id) %></div>
   </section>
   <aside>
-    <p>投稿者: <%= @user.handle %> さん</p>
-    <p>投稿数: <%= @user.microposts.count %></p>
-    <div class="divider"></div>
-    <% if current_user?(@user) %>
-      <%= link_to "新しい投稿を作成", '/postit' %>
-    <% end %>
+    <%= render 'shared/user_info' %>
   </aside>
 </div>

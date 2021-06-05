@@ -96,6 +96,7 @@ body {
   }
   /* ページネーション */
   .pagination {
+    text-align: center;
     span a {
       display: inline-block;
       line-height: 1;
@@ -115,6 +116,23 @@ body {
       line-height: 1;
       text-align: center;
       padding:3px 5px;
+    }
+  }
+  /* フィード外枠(/, /users/:id) */
+  .microposts {
+    box-sizing: border-box;
+    float: left;
+    width:700px;
+    padding:20px;
+    h2 {
+      font-size: 24px;
+      margin-bottom: 24px;
+    }
+    .posts {
+      background-color: #ffffff;
+      overflow-y: scroll;
+      // height: calc(150vh);
+      margin-bottom: 10px;
     }
   }
   /* フィード内投稿 */
@@ -390,7 +408,7 @@ footer {
   box-sizing: border-box;
   clear: both;
   width: 100%;
-  min-height: 100vh;
+  min-height: calc(100vh - 126px); /* 画面高さ100％-(ヘッダーとフッターの高さの合計) */
   padding: 20px;
   .content {
     width: 960px;
@@ -522,24 +540,7 @@ footer {
     font-size: 16px;
   }
 }
-/* フィード外枠(/, /users/:id) */
-.microposts {
-  box-sizing: border-box;
-  float: left;
-  width:700px;
-  padding:20px;
-  h2 {
-    margin-bottom: 24px;
-  }
-  .posts {
-    background-color: #ffffff;
-    overflow-y: scroll;
-    // height: calc(150vh);
-    margin-bottom: 10px;
-  }
-}
-
-/* ログイン後ホーム(/) */
+/* ログイン後認証済みホーム(/) */
 #home_logged_in {
   h1 {
     margin: 0 0 24px 20px;
@@ -550,15 +551,37 @@ footer {
       font-size: 18px;
     }
   }
+}
+/* ログイン後未認証ホーム */
+#home_not_activated {
+  h2 {
+    text-align: center;
+  }
   .not_activated {
     background-color: #f0f0f0;
-    width: 400px;
+    width: 720px;
     border-radius: 3px;
-    margin-top: 20px;
+    margin: 20px auto 0;;
     padding: 10px;
+    p {
+      font-size: 16px;
+    }
+    a {
+      display: inline-block;
+      font-size: 16px;
+      line-height: 1.2;
+      margin-left: 16px;
+    }
+    a.icon {
+      margin: 10px 0;
+      font-size: 20px;
+    }
+    .divider {
+      border-top: 1px dashed #5a5a5a;
+      margin: 10px;
+    }
   }
 }
-
 /* ユーザーページ(/users/:id) */
 #mypage {
   h1 {
@@ -608,6 +631,9 @@ footer {
       background-color: inherit;
     }
   }
+  .account-delete {
+    text-align: right;
+  }
 }
 
 /* 投稿詳細ページ(posts/:id) */
@@ -639,9 +665,12 @@ footer {
       }
       td {
         padding-left: 8px;
-        vertical-align: top;
+        vertical-align: middle;
         border: 1px solid #cccccc;
         line-height: 1.7;
+        div {
+          font-size: 18px;
+        }
         div.pics {
           width: 485px;
           overflow-x: scroll;

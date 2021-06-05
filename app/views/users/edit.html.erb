@@ -19,5 +19,10 @@
       <div><p>パスワード確認</p><%= form.password_field :password_confirmation, placeholder: "確認用" %></div>
       <%= form.submit "更新", class:"btn" %>
     <% end %>
+    <% if !@user.admin? %>
+      <small class="account-delete">
+        <%= link_to "!アカウントを削除する", @user, method: :delete, data: { confirm: "本当に削除してよろしいですか？" } %>
+      </small>
+    <% end %>
   </div>
 </div>

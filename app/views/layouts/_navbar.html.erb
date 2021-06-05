@@ -5,7 +5,9 @@
     <nav>
       <ul class="global-nav dropdown-menu">
       <% if (logged_in? && current_user.activated?) %>
+        <li><%= link_to "ホーム", '/' %></li>
         <li><%= link_to "他のユーザー", '/user_index' %></li>
+        <li><%= link_to "投稿する", '/postit' %></li>
         <li class="user-icon-box">
         <% if current_user.icon.attached? %>
           <%= link_to image_tag(current_user.icon_small, class:"small-icon"), current_user, alt:"ユーザーアイコン" %>
@@ -19,12 +21,6 @@
             <li>
               <%= link_to "ログアウト", logout_path, method: :delete %>
             </li>
-          <% if !current_user.admin? %>
-            <li class="dropdown-divider"></li>
-            <li>
-              <%= link_to "アカウント削除", current_user, method: :delete, data: { confirm: "本当に削除してよろしいですか？" } %>
-            </li>
-          <% end %>
           </ul>
         </li>
       <% elsif (logged_in? && !current_user.activated?) %>

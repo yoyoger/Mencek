@@ -15,9 +15,9 @@
     <% else %>
       <div class="no-pics">写真はありません。</div>
     <% end %>
-    <small>Posted at <%= micropost.created_at.year %>/<%= micropost.created_at.month %>/<%= micropost.created_at.day %> <%= micropost.created_at.hour %>:<%= micropost.created_at.min %> by <%= link_to micropost.user.handle, micropost.user %></small>
+    <small>Posted at <%= micropost.created_at.strftime('%Y/%m/%d %H:%M') %> by <%= link_to micropost.user.handle, micropost.user %></small>
     <div class="vst_post"><%= link_to "詳しくみる>>", post_path(micropost.id) %></div>
-    <% if ( current_user?(micropost.user) || current_user.admin? ) %>
+    <% if current_user?(micropost.user) %>
       <%= link_to "削除", delete_post_path(micropost), method: :delete, data: {confirm: "本当によろしいですか？"},class:"delete-btn" %>
     <% end %>
   </section>

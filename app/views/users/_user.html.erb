@@ -1,7 +1,4 @@
 <% @user = user %>
 <li>
   <%= render 'shared/user_info' %>
-  <% if current_user.admin? && !current_user?(@user) %>
-    <%= link_to "削除", @user, method: :delete, data: { confirm: "本当に削除してよろしいですか？" }, class: "delete-btn" %>
-  <% end %>
 </li>

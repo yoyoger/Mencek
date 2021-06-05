@@ -1,6 +1,13 @@
-<% provide(:title, "#{@user.handle}さん")  %>
+<% if current_user?(@user) %>
+  <% provide(:title, "マイページ") %>
+  <% heading = "#{ greeting }、#{ @user.handle }さん。" %>
+<% else %>
+  <% provide( :title, "#{ @user.handle }さんのページ" ) %>
+  <% heading = "#{ @user.handle }さんのページ" %>
+<% end %>
+
 <div id="mypage" class="content clearfix">
-  <h1><%= @user.handle %> さんのページ</h1>
+  <h1><%= heading %></h1>
 
   <div class="microposts">
     <% if @user.microposts.any? %>
