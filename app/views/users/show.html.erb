@@ -3,11 +3,13 @@
   <% heading = "#{ greeting }、#{ @user.handle }さん。" %>
 <% else %>
   <% provide( :title, "#{ @user.handle }さんのページ" ) %>
-  <% heading = "#{ @user.handle }さんのページ" %>
+  <% heading = @user.handle %>
 <% end %>
 
 <div id="mypage" class="content clearfix">
   <h1><%= heading %></h1>
+
+  <%= render 'shared/user_info_responsive' %>
 
   <div class="microposts">
     <% if @user.microposts.any? %>
@@ -19,9 +21,14 @@
     <% else %>
       <h2>まだ投稿がありません。</h2>
     <% end %>
+    <% if request.referer&.include?(user_index_url) %>
+      <%= link_to "≪ 戻る", user_index_path %>
+    <% else %>
+      <%= link_to "≪ ホームへ", '/' %>
+    <% end %>
   </div>
 
-  <aside>
+  <aside class="responsive-off">
     <%= render 'shared/user_info' %>
     <% if current_user?(@user) %>
       <%= link_to "新しい投稿を作成", '/postit', class:"icon" %>

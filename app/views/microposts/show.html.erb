@@ -31,9 +31,15 @@
     <% if ( current_user?(@micropost.user) || current_user.admin? ) %>
       <div><%= link_to "この投稿を削除する", delete_post_path(@micropost), method: :delete, data: {confirm: "本当によろしいですか？"},class:"delete-btn" %></div>
     <% end %>
-    <div><%= link_to "≪ 戻る", user_path(@micropost.user_id) %></div>
+    <div>
+    <% if request.referer&.include?(user_url(@micropost.user)) %>
+      <%= link_to "≪ 戻る", user_path(@micropost.user) %>
+    <% else %>
+      <%= link_to "≪ 戻る", '/' %>
+    <% end %>
+    </div>
   </section>
-  <aside>
+  <aside class="responsive-off">
     <%= render 'shared/user_info' %>
   </aside>
 </div>

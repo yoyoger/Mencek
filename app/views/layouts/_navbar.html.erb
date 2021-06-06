@@ -5,9 +5,9 @@
     <nav>
       <ul class="global-nav dropdown-menu">
       <% if (logged_in? && current_user.activated?) %>
-        <li><%= link_to "ホーム", '/' %></li>
-        <li><%= link_to "他のユーザー", '/user_index' %></li>
-        <li><%= link_to "投稿する", '/postit' %></li>
+        <li class="responsive-off"><%= link_to "ホーム", '/' %></li>
+        <li class="responsive-off"><%= link_to "他のユーザー", '/user_index' %></li>
+        <li class="responsive-off"><%= link_to "投稿する", '/postit' %></li>
         <li class="user-icon-box">
         <% if current_user.icon.attached? %>
           <%= link_to image_tag(current_user.icon_small, class:"small-icon"), current_user, alt:"ユーザーアイコン" %>
@@ -15,7 +15,10 @@
           <%= link_to image_tag("mencek_icon_default.gif", width:"50", height:"50", class:"small-icon"), current_user, alt:"ユーザーアイコン" %>
         <% end %>
           <ul>
+            <li class="responsive-on"><%= link_to "ホーム", '/' %></li>
             <li><%= link_to "マイページ", current_user %></li>
+            <li class="responsive-on"><%= link_to "投稿する", '/postit' %></li>
+            <li class="responsive-on"><%= link_to "他のユーザー", '/user_index' %></li>
             <li><%= link_to "プロフィール編集", edit_user_path(current_user) %></li>
             <li class="dropdown-divider"></li>
             <li>

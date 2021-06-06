@@ -5,7 +5,7 @@
       <h2 class="icon">最新の投稿をチェックしましょう</h2>
       <%= render 'shared/feed' %>
     </div>
-    <aside>
+    <aside class="responsive-off">
       <%= link_to "新しい投稿を作成", '/postit', class:"icon" %>
       <%= link_to "マイページへ", @user, class:"icon" %>
     </aside>
@@ -20,7 +20,7 @@
         　ますので、そちらをご確認ください。
       </p>
       <p>
-        ・もし認証リンクの有効期限切れなどによりアカウントが認証出来ない場合は、下記のリンクより<br>
+        ・もしメールの紛失等によりアカウントが認証出来ない場合は、下記のリンクより<br>
         　認証メールの再送信を行ってください。
       </p>
       <%= link_to "認証メールを再送信する", resend_activation_email_url, method: :patch, data: { confirm:"認証メールを送信します。よろしいですか？" }, class:"icon" %>

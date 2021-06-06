@@ -1,0 +1,22 @@
+<div class="user-stats-responsive responsive-on clearfix">
+  <div class="user-icon-box">
+    <% if @user.icon.attached? %>
+      <%= link_to image_tag( @user.icon_responsive, class:"responsive-icon"), @user %>
+    <% else %>
+      <%= link_to image_tag("mencek_icon_default.gif", width:"80", height:"80", class:"responsive-icon"), @user %>
+    <% end %>
+  </div>
+  <table>
+    <tr>
+      <th class="posts-count">投稿</th><th class="following-count">フォロー中</th><th>フォロワー</th>
+    </tr>
+    <tr>
+      <td><%= @user.microposts.count %></td>
+    <% if current_user?(@user) %>
+      <td class="following-count"><%= link_to @user.following.count, following_user_path(@user) %></td><td><%= link_to @user.followers.count, followers_user_path(@user) %></td>
+    <% else %>
+      <td class="following-count"><%= @user.following.count %></td><td id="followers"><%= @user.followers.count %></td>
+    <% end %>
+    </tr>
+  </table>
+</div>
