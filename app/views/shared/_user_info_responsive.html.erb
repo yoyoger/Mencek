@@ -12,7 +12,7 @@
     </tr>
     <tr>
       <td><%= @user.microposts.count %></td>
-    <% if current_user?(@user) %>
+    <% if current_user?(@user) && @user.following.any? %>
       <td class="following-count"><%= link_to @user.following.count, following_user_path(@user) %></td><td><%= link_to @user.followers.count, followers_user_path(@user) %></td>
     <% else %>
       <td class="following-count"><%= @user.following.count %></td><td id="followers"><%= @user.followers.count %></td>

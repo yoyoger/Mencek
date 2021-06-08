@@ -1,5 +1,5 @@
 <% flash.each do |message_type, message| %>
   <div class="alert alert-<%= message_type %>">
-    <div><%= message %></div>
+    <div><%= raw message %></div>
   </div>
 <% end %>

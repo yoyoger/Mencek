@@ -4,6 +4,9 @@
     <h2 class="icon">投稿情報</h2>
     <table>
       <tr>
+        <th>投稿者</th><td><%= link_to @micropost.user.handle, user_path(@micropost.user) %></td>
+      </tr>
+      <tr>
         <th>店名</th><td><%= @micropost.shop_name %></td>
       </tr>
       <tr>

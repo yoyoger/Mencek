@@ -1,14 +1,10 @@
 <% provide(:title, @title) %>
 <section id="follow" class="content">
   <h1><%= @title %></h1>
-  <% if @users.any? %>
-    <ol class="clearfix">
-      <%= render @users %>
-    </ol>
-    <%= paginate @users %>
-  <% else %>
-    <p>ユーザーがいません</p>
-  <% end %>
+  <ol class="clearfix">
+    <%= render @users %>
+  </ol>
+  <%= paginate @users %>
   <% @user = User.find(params[:id]) %>
   <% if current_user?(@user) %>
     <%= link_to "≪ マイページへ戻る", @user %>

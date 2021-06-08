@@ -1,4 +1,5 @@
-<%= form_with model: current_user.active_relationships.build, url: relationships_url do |form| %>
+<%= form_with model: current_user.active_relationships.build, url: relationships_url, id:"follow_form" do |form| %>
   <%= hidden_field_tag :followed_id, @user.id %>
-  <%= form.submit "フォローする", class:"btn follow-btn" %>
+  <%= form.submit "フォローする", class:"btn follow-btn follow-btn-large" %>
+  <%= form.submit "+", class:"btn follow-btn follow-btn-small" %>
 <% end %>

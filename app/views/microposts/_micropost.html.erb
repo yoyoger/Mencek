@@ -9,7 +9,7 @@
     <% if micropost.pictures.attached? %>
       <div class="pics">
         <% micropost.pictures.each do |pic| %>
-          <%= image_tag pic.variant(gravity: :center, resize:"240x320^", crop:"240x320+0+0").processed %>
+          <%= image_tag pic.variant(gravity: :center, resize:"240x240^", crop:"240x240+0+0").processed %>
         <% end %>
       </div>
     <% else %>

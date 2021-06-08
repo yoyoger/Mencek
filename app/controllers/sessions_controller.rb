@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       log_in user
       params[:session][:remember_me] == '1'? remember(user) : forget(user)
       if !user.activated?
-        flash[:danger] = "このアカウントは認証されていません。送信されたメールからアカウントを認証してください。"
+        flash[:danger] = "このアカウントは認証されていません。<br>送信されたメールからアカウントを認証してください。"
       end
       redirect_back_or root_url
     else
