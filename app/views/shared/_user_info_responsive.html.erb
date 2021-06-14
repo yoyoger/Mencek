@@ -1,22 +1,35 @@
 <div class="user-stats-responsive responsive-on clearfix">
-  <div class="user-icon-box">
-    <% if @user.icon.attached? %>
-      <%= link_to image_tag( @user.icon_responsive, class:"responsive-icon"), @user %>
+  <% if !current_user?(@user) %>
+  <h3 class="clearfix">
+    <%= link_to @user.handle, @user, class:"icon" %>
+    <div class="follow_form_<%= @user.id %>">
+    <% if !current_user.following?(@user) %>
+      <%= render 'users/follow' %>
     <% else %>
-      <%= link_to image_tag("mencek_icon_default.gif", width:"80", height:"80", class:"responsive-icon"), @user %>
+      <%= render 'users/unfollow' %>
     <% end %>
+  </h3>
+  <% end %>
+  <div class="icon_and_counts clearfix">
+    <div class="user-icon-box">
+      <% if @user.icon.attached? %>
+        <%= link_to image_tag( @user.icon_responsive, class:"responsive-icon"), @user %>
+      <% else %>
+        <%= link_to image_tag("mencek_icon_default.gif", width:"80", height:"80", class:"responsive-icon"), @user %>
+      <% end %>
+    </div>
+    <table>
+      <tr>
+        <th class="posts-count">投稿</th><th class="following-count">フォロー中</th><th>フォロワー</th>
+      </tr>
+      <tr>
+        <td><%= @user.microposts.count %></td>
+      <% if current_user?(@user) && @user.following.any? %>
+        <td class="following-count"><%= link_to @user.following.count, following_user_path(@user) %></td><td><%= link_to @user.followers.count, followers_user_path(@user) %></td>
+      <% else %>
+        <td class="following-count"><%= @user.following.count %></td><td class="followers_<%= @user.id %>"><%= @user.followers.count %></td>
+      <% end %>
+      </tr>
+    </table>
   </div>
-  <table>
-    <tr>
-      <th class="posts-count">投稿</th><th class="following-count">フォロー中</th><th>フォロワー</th>
-    </tr>
-    <tr>
-      <td><%= @user.microposts.count %></td>
-    <% if current_user?(@user) && @user.following.any? %>
-      <td class="following-count"><%= link_to @user.following.count, following_user_path(@user) %></td><td><%= link_to @user.followers.count, followers_user_path(@user) %></td>
-    <% else %>
-      <td class="following-count"><%= @user.following.count %></td><td id="followers"><%= @user.followers.count %></td>
-    <% end %>
-    </tr>
-  </table>
 </div>

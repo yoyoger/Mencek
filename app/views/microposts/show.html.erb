@@ -44,5 +44,8 @@
   </section>
   <aside class="responsive-off">
     <%= render 'shared/user_info' %>
+    <% if current_user?(@user) %>
+      <%= link_to "新しい投稿を作成", '/postit', class:"icon" %>
+    <% end %>
   </aside>
 </div>

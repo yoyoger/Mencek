@@ -3,13 +3,5 @@
   <%= render 'shared/user_info' %>
 </li>
 <li class="responsive-on">
-  <h3 class="clearfix">
-    <%= link_to user.handle, user, class:"icon" %>
-    <% if !current_user.following?(@user) %>
-      <%= render 'users/follow' %>
-    <% else %>
-      <%= render 'users/unfollow' %>
-    <% end %>
-  </h3>
   <%= render 'shared/user_info_responsive' %>
 </li>

@@ -251,7 +251,7 @@ body {
       background-color: #c7c7c7;
     }
   }
-  .follow-btn-small, .unfollow-btn-small {
+  .responsive-on {
     display: none;
   }
   /* 削除ボタン */
@@ -699,10 +699,6 @@ footer {
       display: block;
       font-size: 18px;
     }
-    .divider {
-      margin: 9px 0;
-      border-bottom: 1px solid #cccccc;
-    }
   }
 }
 
@@ -828,34 +824,62 @@ footer {
       }
     }
     .user-stats-responsive {
-      background-color: #f0f0f0;
-      border-radius: 3px;
       display: block;
       width: 360px;
       padding: 10px;
       margin: 0 auto;
-      div.user-icon-box {
-        float: left;
-        margin: 0 10px;
+      h3 {
+        width: 360px;
+        margin: 10px auto 0;
+        text-align: left;
+        a {
+          float: left;
+        }
+        form {
+          float: right;
+          .follow-btn, .unfollow-btn {
+            display: initial;
+            box-sizing: border-box;
+            width: 30px;
+            margin: 0;
+            padding: 2px 1px 7px;
+            font-size: 20px;
+          }
+          .unfollow-btn {
+            border: 1px solid #ff0000;
+          }
+          .responsive-off {
+            display: none;
+          }
+        }
       }
-      table {
-        float: left;
-        height: 80px;
-        line-height: 1.5;
-        border-spacing: 0;
-        border-collapse: collapse;
-        th {
-          padding: 0 10px;
-          font-weight: normal;
-          font-size: 16px;
+      .icon_and_counts {
+        background-color: #f0f0f0;
+        border-radius: 3px;
+        padding: 10px 0;
+        div.user-icon-box {
+          float: left;
+          margin: 0 10px;
         }
-        td {
-          text-align: center;
-          font-weight: bold;
-        }
-        .following-count {
-          border-right: 1px dashed #dbdbdb;
-          border-left: 1px solid #dbdbdb;
+        table {
+          float: left;
+          height: 80px;
+          line-height: 1.5;
+          border-spacing: 0;
+          border-collapse: collapse;
+          th {
+            padding: 0 10px;
+            font-weight: normal;
+            font-size: 16px;
+          }
+          td {
+            text-align: center;
+            font-weight: bold;
+          }
+          .following-count {
+            border-right: 1px dashed #dbdbdb;
+            border-left: 1px solid #dbdbdb;
+          }
         }
       }
     }
@@ -867,24 +891,6 @@ footer {
         background-color: initial;
         padding: 0;
         margin: 0;
-        h3 {
-          width: 380px;
-          margin: 10px auto 0;
-          text-align: left;
-          form {
-            float: right;
-            input {
-              box-sizing: border-box;
-              padding: 7px 3px;
-              margin-top: 13px;
-              width:110px;
-              font-size: 12px;
-            }
-            input.unfollow-btn {
-              border: 1px solid #ff0000;
-            }
-          }
-        }
       }
     }
     #post-detail {
@@ -1057,46 +1063,46 @@ footer {
     }
   /* ユーザースタッツ */
     .user-stats-responsive {
-      width: 290px;
-      padding: 5px;
-      div.user-icon-box {
-        margin:0;
-        img {
-          width: 50px;
-          height: 50px;
+      width: 300px;
+      padding: 0;
+      h3{
+        box-sizing: border-box;
+        width: 300px;
+        a, form {
+          float:left;
         }
-      }
-      table {
-        height: 50px;
-        th {
-          font-size: 11px;
-          box-sizing: border-box;
-          width: 80px;
+        a.icon {
+          margin-right: 10px;
         }
-      }
-    }
-  /* ユーザインデックス＆フォロー一覧 */
-    #user-index, #follow {
-      li.responsive-on {
-        h3{
-          box-sizing: border-box;
-          width: 300px;
-          a, form {
-            float:left;
-          }
-          a.icon {
-            margin-right: 10px;
-          }
-        /* フォローボタン */
-          .follow-btn-large, .unfollow-btn-large {
-            display: none;
-          }
-          .follow-btn-small, .unfollow-btn-small {
+        form {
+          .follow-btn, .unfollow-btn {
+            vertical-align: middle;
             display: initial;
             width: 17px;
             margin: 0;
-            padding: 2px 1px 3px;
+            padding: 2px 1px 4px;
             font-size: 10px;
+          }
+          .responsive-off {
+            display: none;
+          }
+        }
+      }
+      .icon_and_counts {
+        div.user-icon-box {
+          margin:0 5px;
+          img {
+            width: 50px;
+            height: 50px;
+          }
+        }
+        table {
+          height: 50px;
+          th {
+            text-align: center;
+            font-size: 11px;
+            box-sizing: border-box;
+            width: 80px;
           }
         }
       }

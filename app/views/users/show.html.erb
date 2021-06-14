@@ -1,13 +1,13 @@
 <% if current_user?(@user) %>
   <% provide(:title, "マイページ") %>
-  <% heading = "#{ greeting }、#{ @user.handle }さん。" %>
 <% else %>
   <% provide( :title, "#{ @user.handle }さんのページ" ) %>
-  <% heading = @user.handle %>
 <% end %>
 
 <div id="mypage" class="content clearfix">
-  <h1><%= heading %></h1>
+  <% if current_user?(@user) %>
+  <h1><%= "#{ greeting }、#{ @user.handle }さん。" %></h1>
+  <% end %>
 
   <%= render 'shared/user_info_responsive' %>
 
