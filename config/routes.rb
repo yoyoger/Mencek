@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'markings/create'
+  get 'markings/destroy'
   root to: 'static_pages#home'
 
   get   '/user_index',    to: 'users#index'
@@ -21,6 +23,9 @@ Rails.application.routes.draw do
   post   '/password_reset',     to: 'password_resets#create', as: 'create_password_reset'
   get    '/password_reset/:id', to: 'password_resets#edit', as: 'edit_password_reset'
   patch  '/password_reset/:id', to: 'password_resets#update', as: 'update_password_reset'
+
+  post '/want_eat', to: 'markings#create', as: 'want_eat'
+  delete '/unwant_eat/:id', to: 'markings#destroy', as: 'unwant_eat'
 
   resources :users, only:[:show,:destroy]
   resources :users, only:[:following,:followers] do

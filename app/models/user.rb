@@ -1,7 +1,10 @@
 class User < ApplicationRecord
   attr_accessor :remember_token, :activation_token, :reset_token
 
+  #ユーザと投稿　１対多
   has_many :microposts, dependent: :destroy
+
+  #フォロー関係
   has_many :active_relationships, class_name: "Relationship",
                                   foreign_key: "follower_id",
                                   dependent: :destroy
@@ -10,8 +13,16 @@ class User < ApplicationRecord
                                   dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+
+  #食べたい・美味しかった
+  has_many :markings
+  has_many :want_eats
+  has_many :wanted_posts, through: :want_eats, source: :micropost
+
+  #ActiveStorage
   has_one_attached :icon
 
+  #バリデーション関連
   before_save :downcase_email
   before_create :create_activation_digest
 
@@ -92,8 +103,11 @@ class User < ApplicationRecord
     Micropost.where("user_id IN (?) OR user_id = ?", following_ids, id).order(created_at: "DESC")
   end
 
+  #フォロー関連
   def follow(other_user)
-    following << other_user
+    unless self == other_user
+      following << other_user
+    end
   end
 
   def unfollow(other_user)
@@ -102,6 +116,20 @@ class User < ApplicationRecord
 
   def following?(other_user)
     following.include?(other_user)
+  end
+
+  #食べたい関連
+  def want_eat(micropost)
+    want_eats.find_or_create_by(micropost_id: micropost.id)
+  end
+
+  def unwant_eat(micropost)
+    want_eat = want_eats.find_by(micropost_id: micropost.id)
+    want_eat.destroy if want_eat.present?
+  end
+
+  def want_eat?(micropost)
+    wanted_posts.include?(micropost)
   end
 
   def icon_normal

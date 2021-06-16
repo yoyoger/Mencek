@@ -1,0 +1,2 @@
+class WantEat < Marking
+end

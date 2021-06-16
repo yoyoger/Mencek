@@ -251,6 +251,16 @@ body {
       background-color: #c7c7c7;
     }
   }
+  .want-btn, .unwant-btn {
+    cursor: pointer;
+  }
+  .want-btn {
+    border-color: #747474;
+    color: #747474;
+  }
+  .unwant-btn {
+    background-color: #ffd000;
+  }
   .responsive-on {
     display: none;
   }

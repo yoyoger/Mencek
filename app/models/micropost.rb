@@ -1,6 +1,11 @@
 class Micropost < ApplicationRecord
   belongs_to :user
+
+  has_many :want_eats
+  has_many :wanters, through: :want_eats, source: :user
+
   has_many_attached :pictures
+
   validates :user_id, presence: true
   validates :shop_name, presence: true, length: { maximum: 50 }
   validates :menu_name, presence: true, length: { maximum: 50 }
