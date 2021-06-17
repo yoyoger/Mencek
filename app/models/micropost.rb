@@ -1,7 +1,7 @@
 class Micropost < ApplicationRecord
   belongs_to :user
 
-  has_many :want_eats
+  has_many :want_eats, dependent: :destroy
   has_many :wanters, through: :want_eats, source: :user
 
   has_many_attached :pictures

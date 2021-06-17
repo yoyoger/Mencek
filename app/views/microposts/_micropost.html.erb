@@ -1,24 +1,34 @@
 <li class="feed_post">
   <section>
-    <%= link_to "#{micropost.shop_name} | #{micropost.menu_name}", post_path(micropost.id), class:"icon h3" %>
-    <% if micropost.content.length > 25 %>
-      <p><%= micropost.content[0,24] %>… <%= link_to "続きを読む>>", post_path(micropost.id) %></p>
+    <%= link_to "#{@micropost.shop_name} | #{@micropost.menu_name}", post_path(@micropost.id), class:"icon h3" %>
+    <% if @micropost.content.length > 25 %>
+      <p><%= @micropost.content[0,24] %>… <%= link_to "続きを読む>>", post_path(@micropost.id) %></p>
     <% else %>
-      <p><%= micropost.content %></p>
+      <p><%= @micropost.content %></p>
     <% end %>
-    <% if micropost.pictures.attached? %>
+    <% if @micropost.pictures.attached? %>
       <div class="pics">
-        <% micropost.pictures.each do |pic| %>
+        <% @micropost.pictures.each do |pic| %>
           <%= image_tag pic.variant(gravity: :center, resize:"240x240^", crop:"240x240+0+0").processed %>
         <% end %>
       </div>
     <% else %>
       <div class="no-pics">写真はありません。</div>
     <% end %>
-    <small>Posted at <%= micropost.created_at.strftime('%Y/%m/%d %H:%M') %> by <%= link_to micropost.user.handle, micropost.user %></small>
-    <div class="vst_post"><%= link_to "詳しくみる>>", post_path(micropost.id) %></div>
-    <% if current_user?(micropost.user) %>
-      <%= link_to "削除", delete_post_path(micropost), method: :delete, data: {confirm: "本当によろしいですか？"},class:"delete-btn" %>
+    <small>Posted at <%= @micropost.created_at.strftime('%Y/%m/%d %H:%M') %> by <%= link_to @micropost.user.handle, @micropost.user %></small>
+    <div class="vst_post"><%= link_to "詳しくみる>>", post_path(@micropost.id) %></div>
+    <div class="marking">
+      <div class="want_eat-<%= @micropost.id %>">
+      <% if !current_user.wanted_posts.include?(@micropost) %>
+        <%= render 'users/want_eat' %>
+      <% else %>
+        <%= render 'users/unwant_eat' %>
+      <% end %>
+      </div>
+      <div class="wanters_counter-<%= @micropost.id %>"><%= @micropost.wanters.count %> 食べタイ</div>
+    </div>
+    <% if current_user?(@micropost.user) %>
+      <%= link_to "削除", delete_post_path(@micropost), method: :delete, data: {confirm: "本当によろしいですか？"},class:"delete-btn" %>
     <% end %>
   </section>
 </li>

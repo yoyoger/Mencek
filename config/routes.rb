@@ -28,11 +28,13 @@ Rails.application.routes.draw do
   delete '/unwant_eat/:id', to: 'markings#destroy', as: 'unwant_eat'
 
   resources :users, only:[:show,:destroy]
-  resources :users, only:[:following,:followers] do
+  resources :users, only:[:following,:followers,:wanted_posts] do
     member do
-      get :following, :followers
+      get :following, :followers, :wanted_posts
     end
   end
+  
   resources :relationships, only:[:create,:destroy]
+
   resources :account_activations, only: [:edit]
 end

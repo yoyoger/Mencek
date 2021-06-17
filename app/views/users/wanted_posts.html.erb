@@ -1,0 +1,20 @@
+<% provide(:title, "食ベタイ投稿") %>
+<div id="wantedposts" class="content">
+  <div class="microposts" style="float:none;">
+    <% if @microposts.any? %>
+      <h2>あなたの食ベタイ投稿一覧</h2>
+      <div class="wantedposts_counter">食べタイ投稿数: <%= current_user.wanted_posts.count %></div>
+      <ol class="posts">
+      <% @microposts.each do |post| %>
+        <% @micropost = post %>
+        <%= render 'microposts/micropost' %>
+      <% end %>
+      </ol>
+      <%= paginate @microposts %>
+    <% else %>
+      <h2>まだ食ベタイ投稿がありません。</h2>
+    <% end %>
+    <%= link_to "≪ マイページへ", current_user %><br>
+    <%= link_to "≪ 戻る", request.referer %>
+  </div>
+</div>

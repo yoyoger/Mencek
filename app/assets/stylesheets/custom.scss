@@ -636,6 +636,16 @@ footer {
   }
 }
 
+/* 食ベタイ一覧(/users/:id/wanted_posts) */
+#wantedposts {
+  .microposts {
+    margin: 0 auto;
+    .wantedposts_counter {
+      font-size: 20px;
+    }
+  }
+}
+
 /* プロフィール編集(/edit_user/:id) */
 #edit-user {
   .user-icon-box {

@@ -15,7 +15,10 @@
     <% if @user.microposts.any? %>
       <h2>投稿</h2>
       <ol class="posts">
-        <%= render @microposts %>
+      <% @microposts.each do |post| %>
+        <% @micropost = post %>
+        <%= render 'microposts/micropost' %>
+      <% end %>
       </ol>
       <%= paginate @microposts %>
     <% else %>
@@ -32,6 +35,7 @@
     <%= render 'shared/user_info' %>
     <% if current_user?(@user) %>
       <%= link_to "新しい投稿を作成", '/postit', class:"icon" %>
+      <%= link_to "食ベタイ投稿をみる", wanted_posts_user_path(current_user), class:"icon" %>
     <% end %>
     <% if current_user.admin? && !current_user?(@user) %>
       <%= link_to "ユーザー削除", @user, method: :delete, data: { confirm: "本当に削除してよろしいですか？" }, class: "delete-btn" %>

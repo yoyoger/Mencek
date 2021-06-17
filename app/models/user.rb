@@ -16,7 +16,7 @@ class User < ApplicationRecord
 
   #食べたい・美味しかった
   has_many :markings
-  has_many :want_eats
+  has_many :want_eats, dependent: :destroy
   has_many :wanted_posts, through: :want_eats, source: :micropost
 
   #ActiveStorage

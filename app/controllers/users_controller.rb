@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:show, :index, :edit, :update, :following, :followers, :destroy]
-  before_action :activated_user, only: [:show, :index, :edit, :update, :following, :followers]
-  before_action :correct_user, only: [:edit, :update, :following, :followers]
+  before_action :logged_in_user, only: [:show, :index, :edit, :update, :following, :followers, :destroy, :wanted_posts]
+  before_action :activated_user, only: [:show, :index, :edit, :update, :following, :followers, :wanted_posts]
+  before_action :correct_user, only: [:edit, :update, :following, :followers, :wanted_posts]
   before_action :not_logged_in, only: [:new, :create]
   before_action :can_delete_user, only: :destroy
 
@@ -73,6 +73,10 @@ class UsersController < ApplicationController
     @title = "#{@user.handle} さんのフォロワー"
     @users = @user.followers.order("relationships.created_at DESC").page(params[:page]).per(9)
     render 'show_follow'
+  end
+
+  def wanted_posts
+    @microposts = current_user.wanted_posts.order(created_at: "DESC").page(params[:page]).per(5) if logged_in?
   end
 
   def resend_activation_email
