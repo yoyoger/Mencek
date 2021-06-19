@@ -1,5 +1,0 @@
-<%= form_with model: current_user.want_eats.build, url: want_eat_url, local: false do |form| %>
-  <%= hidden_field_tag :micropost_id, @micropost.id %>
-  <%= hidden_field_tag :type, "WantEat" %>
-  <%= form.submit "食ベタイ", class:"want-btn" %>
-<% end %>

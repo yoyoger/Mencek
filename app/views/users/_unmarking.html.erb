@@ -1,0 +1,13 @@
+<% if marking_type == 'WantEat' %>
+  <% want_eat = current_user.want_eats.find_by(micropost_id: micropost.id) %>
+  <%= form_with model: want_eat, method: :delete, url: unmarking_url(want_eat), local: false do |form| %>
+    <%= hidden_field_tag :micropost_id, micropost.id %>
+    <%= form.submit "食ベタイ！", class:"unwant-btn" %>
+  <% end %>
+<% elsif marking_type == 'Recommend' %>
+  <% recommend = current_user.recommends.find_by(micropost_id: micropost.id) %>
+  <%= form_with model: recommend, method: :delete, url: unmarking_url(recommend), local: false do |form| %>
+    <%= hidden_field_tag :micropost_id, micropost.id %>
+    <%= form.submit "オススメ！", class:"unrecommend-btn" %>
+  <% end %>
+<% end %>

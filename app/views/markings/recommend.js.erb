@@ -1,0 +1,2 @@
+$(".recommend-<%= @micropost.id %>").html("<%= escape_javascript(render partial: 'users/unmarking', locals: { marking_type: 'Recommend', micropost: @micropost }) %>");
+$(".recommenders_counter-<%= @micropost.id %>").html(': <%= @micropost.recommenders.count %>');

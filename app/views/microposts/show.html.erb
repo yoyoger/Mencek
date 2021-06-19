@@ -4,9 +4,6 @@
     <h2 class="icon">投稿情報</h2>
     <table>
       <tr>
-        <th>投稿者</th><td><%= link_to @micropost.user.handle, user_path(@micropost.user) %></td>
-      </tr>
-      <tr>
         <th>店名</th><td><%= @micropost.shop_name %></td>
       </tr>
       <tr>
@@ -28,22 +25,34 @@
         <th>レビュー</th><td><div><%= @micropost.content %></div></td>
       </tr>
       <tr>
+        <th>投稿者</th><td><%= link_to @micropost.user.handle, user_path(@micropost.user) %></td>
+      </tr>
+      <tr>
         <th>投稿日時</th><td><div><%= @micropost.created_at.strftime('%Y年%m月%d日 %H:%M') %><div></td>
       </tr>
     </table>
-    <div class="marking">
-      <div class="want_eat">
+    <div class="marking clearfix">
+      <div class="want_eat-<%= @micropost.id %>">
       <% if !current_user.wanted_posts.include?(@micropost) %>
-        <%= render 'users/want_eat' %>
+        <%= render 'users/marking', micropost: @micropost, marking_type: 'WantEat' %>
       <% else %>
-        <%= render 'users/unwant_eat' %>
+        <%= render 'users/unmarking', micropost: @micropost, marking_type: 'WantEat' %>
       <% end %>
       </div>
-      <div class="wanters_counter"><%= @micropost.wanters.count %> 食べタイ</div>
+      <div class="wanters_counter-<%= @micropost.id %>">: <%= @micropost.wanters.count %></div>
+      <div class="recommend-<%= @micropost.id %>">
+      <% if !current_user.recommended_posts.include?(@micropost) %>
+        <%= render 'users/marking', micropost: @micropost, marking_type: 'Recommend' %>
+      <% else %>
+        <%= render 'users/unmarking', micropost: @micropost, marking_type: 'Recommend' %>
+      <% end %>
+      </div>
+      <div class="recommenders_counter-<%= @micropost.id %>">: <%= @micropost.recommenders.count %></div>
+
+      <% if ( current_user?(@micropost.user) || current_user.admin? ) %>
+        <div class="delete"><%= link_to "削除", delete_post_path(@micropost), method: :delete, data: {confirm: "本当によろしいですか？"},class:"delete-btn" %></div>
+      <% end %>
     </div>
-    <% if ( current_user?(@micropost.user) || current_user.admin? ) %>
-      <div><%= link_to "この投稿を削除する", delete_post_path(@micropost), method: :delete, data: {confirm: "本当によろしいですか？"},class:"delete-btn" %></div>
-    <% end %>
     <div>
     <% if request.referer&.include?(user_url(@micropost.user)) %>
       <%= link_to "≪ 戻る", user_path(@micropost.user) %>

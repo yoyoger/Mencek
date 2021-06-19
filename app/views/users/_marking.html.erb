@@ -1,0 +1,13 @@
+<% if marking_type == 'WantEat' %>
+  <%= form_with model: current_user.want_eats.build, url: marking_url, local: false do |form| %>
+    <%= hidden_field_tag :micropost_id, micropost.id %>
+    <%= hidden_field_tag :type, 'WantEat' %>
+    <%= form.submit "食ベタイ！", class:"want-btn" %>
+  <% end %>
+<% elsif marking_type == 'Recommend' %>
+  <%= form_with model: current_user.recommends.build, url: marking_url, local: false do |form| %>
+    <%= hidden_field_tag :micropost_id, micropost.id %>
+    <%= hidden_field_tag :type, 'Recommend' %>
+    <%= form.submit "オススメ！", class:"recommend-btn" %>
+  <% end %>
+<% end %>

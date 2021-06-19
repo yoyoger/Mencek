@@ -3,6 +3,8 @@ class Micropost < ApplicationRecord
 
   has_many :want_eats, dependent: :destroy
   has_many :wanters, through: :want_eats, source: :user
+  has_many :recommends, dependent: :destroy
+  has_many :recommenders, through: :recommends, source: :user
 
   has_many_attached :pictures
 

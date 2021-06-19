@@ -24,13 +24,13 @@ Rails.application.routes.draw do
   get    '/password_reset/:id', to: 'password_resets#edit', as: 'edit_password_reset'
   patch  '/password_reset/:id', to: 'password_resets#update', as: 'update_password_reset'
 
-  post '/want_eat', to: 'markings#create', as: 'want_eat'
-  delete '/unwant_eat/:id', to: 'markings#destroy', as: 'unwant_eat'
+  post '/marking', to: 'markings#create', as: 'marking'
+  delete '/unmarking/:id', to: 'markings#destroy', as: 'unmarking'
 
   resources :users, only:[:show,:destroy]
   resources :users, only:[:following,:followers,:wanted_posts] do
     member do
-      get :following, :followers, :wanted_posts
+      get :following, :followers, :wanted_posts, :recommended_posts
     end
   end
   

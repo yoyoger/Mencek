@@ -18,6 +18,8 @@ class User < ApplicationRecord
   has_many :markings
   has_many :want_eats, dependent: :destroy
   has_many :wanted_posts, through: :want_eats, source: :micropost
+  has_many :recommends, dependent: :destroy
+  has_many :recommended_posts, through: :recommends, source: :micropost
 
   #ActiveStorage
   has_one_attached :icon
@@ -132,6 +134,21 @@ class User < ApplicationRecord
     wanted_posts.include?(micropost)
   end
 
+  #おすすめ
+  def recommend(micropost)
+    recommends.find_or_create_by(micropost_id: micropost.id)
+  end
+
+  def unrecommend(micropost)
+    recommend = recommends.find_by(micropost_id: micropost.id)
+    recommend.destroy if recommend.present?
+  end
+
+  def recommend?(micropost)
+    recommended_posts.include?(micropost)
+  end
+
+  #アイコンリサイズ
   def icon_normal
     icon.variant(gravity: :center, resize:"100x100^", crop:"100x100+0+0").processed
   end

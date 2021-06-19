@@ -175,9 +175,12 @@ body {
     }
     small {
       display: block;
-      line-height: 1.2;
+      line-height: 1.6;
       a {
         font-weight: bold;
+      }
+      .delete {
+        float: right;
       }
     }
     .vst_post {
@@ -251,25 +254,31 @@ body {
       background-color: #c7c7c7;
     }
   }
-  .want-btn, .unwant-btn {
+  .want-btn, .unwant-btn, .recommend-btn, .unrecommend-btn {
     cursor: pointer;
+    border-radius: 3px;
   }
-  .want-btn {
+  .want-btn, .recommend-btn {
     border-color: #747474;
     color: #747474;
   }
   .unwant-btn {
     background-color: #ffd000;
+    border-color: #ffd000;
+  }
+  .unrecommend-btn {
+    background-color: #ff8b55;
+    border-color: #ff8b55;
   }
   .responsive-on {
     display: none;
   }
   /* 削除ボタン */
   .delete-btn {
-    padding: 3px;
-    background-color: #a7a7a7;
+    padding: 5px;
+    color: #4e4e4e !important;
+    background-color: #cacaca;
     font-size: medium;
-    border: 2px solid #999999;
     border-radius: 3px;
     &:hover {
       font-weight: normal;
@@ -687,7 +696,7 @@ footer {
     table {
       box-sizing: border-box;
       width: 660px;
-      margin: 18px 0 40px;
+      margin: 18px 0 10px;
       border-spacing: 0px;
       border-collapse: collapse;
       border: 2px solid #cccccc;
@@ -718,6 +727,12 @@ footer {
     }
     div {
       font-size: 16px;
+    }
+    .marking {
+      margin-bottom: 10px;
+      .delete {
+        float:right;
+      }
     }
   }
   aside {
@@ -943,6 +958,7 @@ footer {
     }
     .delete-btn {
       font-size: 10px;
+      padding: 3px;
     }
     /* ヘッダー */
     header {
@@ -1081,6 +1097,9 @@ footer {
       }
       p a, .vst_post {
         font-size: 12px;
+      }
+      .pics {
+        overflow-x: hidden;
       }
       img {
         width: 100px;

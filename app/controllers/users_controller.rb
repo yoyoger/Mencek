@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:show, :index, :edit, :update, :following, :followers, :destroy, :wanted_posts]
-  before_action :activated_user, only: [:show, :index, :edit, :update, :following, :followers, :wanted_posts]
+  before_action :logged_in_user, only: [:show, :index, :edit, :update, :following, :followers, :destroy, :wanted_posts, :recommended_posts]
+  before_action :activated_user, only: [:show, :index, :edit, :update, :following, :followers, :wanted_posts, :recommended_posts]
   before_action :correct_user, only: [:edit, :update, :following, :followers, :wanted_posts]
   before_action :not_logged_in, only: [:new, :create]
   before_action :can_delete_user, only: :destroy
@@ -77,6 +77,11 @@ class UsersController < ApplicationController
 
   def wanted_posts
     @microposts = current_user.wanted_posts.order(created_at: "DESC").page(params[:page]).per(5) if logged_in?
+  end
+
+  def recommended_posts
+    @user = User.find(params[:id])
+    @microposts = @user.recommended_posts.order(created_at: "DESC").page(params[:page]).per(5)
   end
 
   def resend_activation_email

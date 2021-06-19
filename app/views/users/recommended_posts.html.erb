@@ -1,0 +1,29 @@
+<% provide(:title, '') %>
+<div id="recommended_posts" class="content clearfix">
+  <%= render 'shared/user_info_responsive' %>
+
+  <div class="microposts">
+    <% if @microposts.any? %>
+      <h2><%= @user.handle %>さんがオススメした投稿</h2>
+      <div class="recommendedposts_counter">オススメ数: <%= @user.recommended_posts.count %></div>
+      <ol class="posts">
+      <% @microposts.each do |post| %>
+        <% @micropost = post %>
+        <%= render 'microposts/micropost' %>
+      <% end %>
+      </ol>
+      <%= paginate @microposts %>
+    <% else %>
+      <h2>まだオススメがありません。</h2>
+    <% end %>
+    <%= link_to "≪ #{@user.handle}さんのページへ", @user %>
+  </div>
+
+  <aside class="responsive-off">
+    <%= render 'shared/user_info' %>
+    <% if current_user?(@user) %>
+      <%= link_to "新しい投稿を作成", '/postit', class:"icon" %><br>
+      <%= link_to "食ベタイ投稿をみる", wanted_posts_user_path(current_user), class:"icon" %>
+    <% end %>
+  </aside>
+</div>
