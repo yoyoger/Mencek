@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:show, :index, :edit, :update, :following, :followers, :destroy, :wanted_posts, :recommended_posts]
-  before_action :activated_user, only: [:show, :index, :edit, :update, :following, :followers, :wanted_posts, :recommended_posts]
+  # before_action :activated_user, only: [:show, :index, :edit, :update, :following, :followers, :wanted_posts, :recommended_posts]
   before_action :correct_user, only: [:edit, :update, :following, :followers, :wanted_posts]
   before_action :not_logged_in, only: [:new, :create]
   before_action :can_delete_user, only: :destroy
@@ -26,9 +26,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      @user.send_activation_email
+      # @user.send_activation_email
       log_in @user
-      flash[:info] = "アカウント認証用のメールを送信しました。メールをご確認ください。"
+      # flash[:info] = "アカウント認証用のメールを送信しました。メールをご確認ください。"
+      flash[:success] = "アカウントの作成に成功しました。"
       redirect_to root_url
     else
       render 'new'
@@ -84,17 +85,17 @@ class UsersController < ApplicationController
     @microposts = @user.recommended_posts.order(created_at: "DESC").page(params[:page]).per(5)
   end
 
-  def resend_activation_email
-    @user = current_user
-    @user.create_activation_digest
-    if @user.update(activation_digest: @user.activation_digest)
-      @user.send_activation_email
-      flash[:success] = "認証メールが送信されました。"
-      redirect_to root_url
-    else
-      flash[:danger] = "エラーが起きました。もう一度試してください。"
-    end
-  end
+  # def resend_activation_email
+  #   @user = current_user
+  #   @user.create_activation_digest
+  #   if @user.update(activation_digest: @user.activation_digest)
+  #     @user.send_activation_email
+  #     flash[:success] = "認証メールが送信されました。"
+  #     redirect_to root_url
+  #   else
+  #     flash[:danger] = "エラーが起きました。もう一度試してください。"
+  #   end
+  # end
 
   private
 
