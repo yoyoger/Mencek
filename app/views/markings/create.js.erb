@@ -1,3 +1,3 @@
 $(".want_eat-<%= @micropost.id %>").html("<%= escape_javascript(render('users/unwant_eat')) %>");
-$(".wanters_counter-<%= @micropost.id %>").html('<%= @micropost.wanters.count %> 食ベタイ');
+$(".wanters_counter-<%= @micropost.id %>").html(': <%= @micropost.wanters.count %>');
 $(".wantedposts_counter").html('食べタイ投稿数: <%= current_user.wanted_posts.count %>');

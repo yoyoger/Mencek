@@ -278,6 +278,12 @@ body {
       text-decoration: none;
     }
   }
+  /* マーキングバー */
+  .marking {
+    div {
+      display: inline-block;
+    }
+  }
   /* フラッシュメッセージ */
   .alert-success {
     background-color: #ccffc2;
