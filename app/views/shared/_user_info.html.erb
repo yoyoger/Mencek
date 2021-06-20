@@ -2,9 +2,9 @@
 <div class="user-stats">
   <div class="user-icon-box">
     <% if @user.icon.attached? %>
-      <%= link_to image_tag( @user.icon_normal, class:"normal-icon"), @user %>
+      <%= link_to image_tag( @user.icon_normal, class:"normal-icon", alt:"#{@user.handle}のアイコン"), @user %>
     <% else %>
-      <%= link_to image_tag("mencek_icon_default.gif", width:"100", height:"100", class:"normal-icon"), @user %>
+      <%= link_to image_tag("mencek_icon_default.gif", width:"100", height:"100", class:"normal-icon", alt:"#{@user.handle}のアイコン"), @user %>
     <% end %>
   </div>
   <div class="index-handle"><%= link_to @user.handle, @user %></div>

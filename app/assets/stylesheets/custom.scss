@@ -79,12 +79,18 @@ body {
   /* ユーザーアイコン */
   img.normal-icon {
     border-radius: 20px;
+    // width: 100px;
+    // height: 100px;
   }
   img.small-icon {
     border-radius: 10px;
+    width: 50px;
+    height: 50px;
   }
   img.responsive-icon {
     border-radius: 15px;
+    width: 80px;
+    height: 80px;
   }
   /* 見出しアイコン */
   .icon::before {
@@ -162,10 +168,14 @@ body {
         color: #3f3f3f;
       }
     }
-    .pics {
+    .small-pics-box {
       width: auto;
       overflow-x: scroll;
       white-space: nowrap;
+    }
+    .small-pics{
+      width: 180px;
+      height: 240px
     }
     .no-pics {
       background-color: #f0f0f0;
@@ -717,7 +727,7 @@ footer {
         div {
           font-size: 18px;
         }
-        div.pics {
+        div.normal-pics-box {
           width: 485px;
           overflow-x: scroll;
           padding-bottom: 34px;

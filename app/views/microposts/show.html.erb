@@ -13,9 +13,9 @@
         <th>写真</th>
         <td>
           <% if @micropost.pictures.attached? %>
-            <div class="pics">
-              <% @micropost.pictures.each do |pic| %>
-                <%= image_tag pic.variant(gravity: :center, resize:"300x400^", crop:"300x400+0+0").processed %>
+            <div class="normal-pics-box">
+              <% @micropost.pictures.each do |p| %>
+                <%= image_tag p.variant(gravity: :center, resize:"240x320^", crop:"240x320+0+0").processed, class:"normal-pics", alt:"添付された画像" %>
               <% end %>
             </div>
           <% end %>

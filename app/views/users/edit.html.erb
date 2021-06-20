@@ -4,9 +4,9 @@
   <div class="form">
     <div class="user-icon-box">
       <% if @user.icon.attached? %>
-        <%= image_tag( @user.icon_normal, class:"normal-icon") %>
+        <%= image_tag( @user.icon_normal, class:"normal-icon", alt:"あなたのアイコン") %>
       <% else %>
-        <%= image_tag("mencek_icon_default.gif", width:"100", height:"100", class:"normal-icon") %>
+        <%= image_tag("mencek_icon_default.gif", width:"100", height:"100", class:"normal-icon", alt:"あなたのアイコン") %>
       <% end %>
     </div>
     <%= form_with model: @user, url: edit_user_url(@user), local: true do |form| %>

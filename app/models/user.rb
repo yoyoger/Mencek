@@ -153,13 +153,13 @@ class User < ApplicationRecord
     icon.variant(gravity: :center, resize:"100x100^", crop:"100x100+0+0").processed
   end
 
-  def icon_small
-    icon.variant(gravity: :center, resize:"50x50^", crop:"50x50+0+0").processed
-  end
+  # def icon_small
+  #   icon.variant(gravity: :center, resize:"50x50^", crop:"50x50+0+0").processed
+  # end
 
-  def icon_responsive
-    icon.variant(gravity: :center, resize:"80x80^", crop:"80x80+0+0").processed
-  end
+  # def icon_responsive
+  #   icon.variant(gravity: :center, resize:"80x80^", crop:"80x80+0+0").processed
+  # end
 
   private
     def icon_type

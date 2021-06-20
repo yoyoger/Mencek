@@ -10,7 +10,7 @@
         <li class="responsive-off"><%= link_to "投稿する", '/postit' %></li>
         <li class="user-icon-box">
         <% if current_user.icon.attached? %>
-          <%= link_to image_tag(current_user.icon_small, class:"small-icon"), current_user, alt:"ユーザーアイコン" %>
+          <%= link_to image_tag(current_user.icon_normal, class:"small-icon", alt:"あなたのアイコン"), current_user, alt:"ユーザーアイコン" %>
         <% else %>
           <%= link_to image_tag("mencek_icon_default.gif", width:"50", height:"50", class:"small-icon"), current_user, alt:"ユーザーアイコン" %>
         <% end %>

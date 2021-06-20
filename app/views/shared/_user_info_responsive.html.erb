@@ -13,9 +13,9 @@
   <div class="icon_and_counts clearfix">
     <div class="user-icon-box">
       <% if @user.icon.attached? %>
-        <%= link_to image_tag( @user.icon_responsive, class:"responsive-icon"), @user %>
+        <%= link_to image_tag( @user.icon_normal, class:"responsive-icon", alt:"#{@user.handle}のアイコン"), @user %>
       <% else %>
-        <%= link_to image_tag("mencek_icon_default.gif", width:"80", height:"80", class:"responsive-icon"), @user %>
+        <%= link_to image_tag("mencek_icon_default.gif", width:"80", height:"80", class:"responsive-icon", alt:"#{@user.handle}のアイコン"), @user %>
       <% end %>
     </div>
     <table>
